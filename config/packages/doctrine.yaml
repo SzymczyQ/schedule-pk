@@ -1,6 +1,17 @@
+# Doctrine parameters
 parameters:
     env(DATABASE_URL): ''
 
+# Doctrine extensions services
+services:
+    gedmo.listener.timestampable:
+        class: Gedmo\Timestampable\TimestampableListener
+        tags:
+        - { name: doctrine.event_subscriber }
+        calls:
+        - [ setAnnotationReader, [ "@annotation_reader"] ]
+
+# Doctrine configuration
 doctrine:
     dbal:
         driver: 'pdo_mysql'
