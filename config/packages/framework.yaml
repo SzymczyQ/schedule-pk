@@ -9,6 +9,10 @@ framework:
     session:
         handler_id: ~
 
+    # Set TWIG as default templating engine
+    templating:
+        engines: twig
+
     #esi: true
     #fragments: true
     php_errors:
