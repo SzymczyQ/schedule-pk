@@ -1,12 +1,86 @@
+{% trans_default_domain 'main' %}
+
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="pl">
+<head>
+    {# PAGE META TAGS #}
+    {% block pageMetaTags %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="{% block pageMetaDescriptionTag %}{% endblock %}">
+        <meta name="keywords" content="">
+        <meta name="author" content="">
+        <meta name="robots" content="{% block pageMetaRobotsTag %}{{ 'all,follow' }}{% endblock %}">
+        <meta name="googlebot" content="{% block pageMetaGooglebotag %}{{ 'index,follow,snippet,archive' }}{% endblock %}">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    {% endblock %}
+
+    {# PAGE TITLE #}
+    <title>{% spaceless %}{% block pageTitle %}{% endblock %}{% endspaceless %} | </title>
+
+    {# PPAGE STYLESHEETS #}
+    {% block pageStylesheets %}
+        {# GOOGLE FONTS #}
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+        {# BOOTSTRAP AND FONT AWESOME CSS #}
+        <link rel="stylesheet" href="{{ asset('build/css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('build/css/font-awesome.css') }}">
+
+        {# IONICONS STYLES #}
+        <link href="{{ asset('build/css/ionicons.css') }}" rel="stylesheet">
+
+        {# THEME STYLESHEET #}
+        <link href="{{ asset('build/css/adminlte.css') }}" rel="stylesheet" id="theme-stylesheet">
+        <link href="{{ asset('build/css/skin-green.css') }}" rel="stylesheet">
+
+        {# CUSTOM STYLESHEET #}
+        <link href="{{ asset('build/css/custom.css') }}" rel="stylesheet">
+
+    {% endblock %}
+
+    {# RESPONSIVITY FOR OLDER IE #}
+    {% block pageResponsiveIE %}
+        <!--[if lt IE 9]>
+        <script src="{{ asset('build/js/html5shiv.js') }}"></script>
+        <script src="{{ asset('build/js/respond.js') }}"></script>
+        <![endif]-->
+    {% endblock %}
+
+    {# JAVASCRIPT FILES #}
+    {% block pageJavaScripts %}
+
+    {% endblock %}
+
+    {# FAVICON AND APPLE TOUCH ICONS #}
+    {% block pageFavicons %}
+        <link rel="shortcut icon" href="{{ asset('build/images/favicon.ico') }}" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="{{ asset('build/images/favicon-57x57.png') }}" />
+        <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('build/images/favicon-57x57.png') }}" />
+        <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('build/images/favicon-72x72.png') }}" />
+        <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('build/images/favicon-76x76.png') }}" />
+        <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('build/images/favicon-114x114.png') }}" />
+        <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('build/images/favicon-120x120.png') }}" />
+        <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('build/images/favicon-144x144.png') }}" />
+        <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('build/images/favicon-152x152.png') }}" />
+    {% endblock %}
+</head>
+
+
+<body class="hold-transition {% block pageBodyClass %}{{ 'skin-green' }}{% endblock %}">
+
+{# PAGE BODY BLOCK #}
+{% block pageBody %}{% endblock %}
+
+{# JAVASCRIPT EXTRA SCRIPTS #}
+{% block pageExtraJavaScripts %}
+    <script src="{{ asset('build/js/jquery.js') }}"></script>
+    <script src="{{ asset('build/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('build/js/jquery.slimscroll.js') }}"></script>
+    <script src="{{ asset('build/js/fastclick.js') }}"></script>
+    <script src="{{ asset('build/js/adminlte.js') }}"></script>
+    <script src="{{ asset('build/js/demo.js') }}"></script>
+{% endblock %}
+
+</body>
 </html>
