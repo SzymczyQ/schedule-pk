@@ -16,6 +16,6 @@ class HomepageController extends Controller
      */
     public function index()
     {
-        return $this->render('base.html.twig');
+        return $this->render('homepage/index.html.twig');
     }
 }

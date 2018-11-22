@@ -8,3 +8,20 @@ login:
     login_box_title: 'Zaloguj się, aby rozpocząć sesję'
     or_label: 'LUB'
     google_button_label: 'Zaloguj się przy użyciu Google'
+
+# Register page
+register:
+    page_title: 'Rejestracja konta'
+    register_box_title: 'Zarejestruj nowe konto'
+    or_label: 'LUB'
+    google_button_label: 'Zarejestruj się przy użyciu Google'
+    login_link_text: 'Mam już konto'
+    register_button_label: 'Zarejestruj'
+    email_input_placeholder: 'Adres email...'
+    password_input_placeholder: 'Hasło...'
+    retype_password_input_placeholder: 'Powtórz hasło...'
+    username_input_placeholder: 'Nazwa użytkownika...'
+
+# Homepage
+homepage:
+    page_title: 'Strona główna'

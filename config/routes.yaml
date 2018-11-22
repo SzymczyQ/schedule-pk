@@ -1,2 +1,8 @@
+# FOSUserBundle routes
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+# Overwritten FOSUserBundle routes
+fos_user_registration_confirmed:
+    path: /register/confirmed
+    controller: App\Controller\RegistrationController::confirmedAction

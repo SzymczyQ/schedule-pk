@@ -8,7 +8,9 @@
 {% block pageBody %}
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ path('fos_user_security_login') }}">{{ application.name }}</a>
+            <a href="{{ path('fos_user_security_login') }}">
+                {{ application.name }}
+            </a>
         </div>
 
         <div class="login-box-body">
@@ -22,9 +24,9 @@
                 </p>
             {% endif %}
 
-            <form action="{{ path("fos_user_security_check") }}" method="POST">
+            <form action="{{ path("fos_user_security_check") }}" method="post">
                 {% if csrf_token %}
-                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
                 {% endif %}
 
                 <div class="form-group has-feedback">

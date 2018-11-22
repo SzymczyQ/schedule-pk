@@ -17,3 +17,11 @@ services:
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
+
+    # Overwritten FOSUserBundle register action
+    App\Controller\RegistrationController:
+        arguments:
+            - '@event_dispatcher'
+            - '@fos_user.registration.form.factory'
+            - '@FOS\UserBundle\Model\UserManagerInterface'
+            - '@security.token_storage'

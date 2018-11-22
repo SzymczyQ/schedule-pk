@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block pageTitle %}
+    {{ 'register.page_title'|trans }}
+{% endblock %}
+
+{% block pageBodyClass %}{{ 'register-page' }}{% endblock %}
+{% block pageBody %}
+
+    <div class="register-box">
+        <div class="register-logo">
+            <a href="{{ path('fos_user_registration_register') }}">
+                {{ application.name }}
+            </a>
+        </div>
+
+        <div class="register-box-body">
+            <p class="login-box-msg">
+                {{ 'register.register_box_title'|trans }}
+            </p>
+
+            {% if form.vars.errors %}
+                {%- for error in form.vars.errors -%}
+                    <p class="text-danger login-box-msg">
+                        {{ error.message }}
+                    </p>
+                {%- endfor -%}
+            {% endif %}
+
+            <form action="{{ path('fos_user_registration_register') }}"
+                  method="post"
+                  class="fos_user_registration_register"
+            >
+                <input type="hidden"
+                       id="{{ form._token.vars.id }}"
+                       name="{{ form._token.vars.full_name }}"
+                       value="{{ form._token.vars.value }}"
+                />
+
+                <div class="form-group has-feedback {% if not form.username.vars.valid %}{{ 'has-error' }}{% endif %}">
+                    <input type="text"
+                           class="form-control"
+                           id="{{ form.username.vars.id }}"
+                           name="{{ form.username.vars.full_name }}"
+                           placeholder="{{ 'register.username_input_placeholder'|trans }}"
+                           required="required"
+                    />
+
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    <span class="help-block">{{ form_errors(form.username) }}</span>
+                </div>
+
+                <div class="form-group has-feedback {% if not form.email.vars.valid %}{{ 'has-error' }}{% endif %}">
+                    <input type="email"
+                           class="form-control"
+                           id="{{ form.email.vars.id }}"
+                           name="{{ form.email.vars.full_name }}"
+                           placeholder="{{ 'register.email_input_placeholder'|trans }}"
+                           required="required"
+                    />
+
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    <span class="help-block">{{ form_errors(form.email) }}</span>
+                </div>
+
+                <div class="form-group has-feedback {% if not form.plainPassword.first.vars.valid %}{{ 'has-error' }}{% endif %}">
+                    <input type="password"
+                           class="form-control"
+                           id="{{ form.plainPassword.first.vars.id }}"
+                           name="{{ form.plainPassword.first.vars.full_name }}"
+                           placeholder="{{ 'register.password_input_placeholder'|trans }}"
+                           required="required"
+                    />
+
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    <span class="help-block">{{ form_errors(form.plainPassword.first) }}</span>
+                </div>
+
+                <div class="form-group has-feedback {% if not form.plainPassword.second.vars.valid %}{{ 'has-error' }}{% endif %}">
+                    <input type="password"
+                           class="form-control"
+                           id="{{ form.plainPassword.second.vars.id }}"
+                           name="{{ form.plainPassword.second.vars.full_name }}"
+                           placeholder="{{ 'register.retype_password_input_placeholder'|trans }}"
+                           required="required"
+                    />
+
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    <span class="help-block">{{ form_errors(form.plainPassword.second) }}</span>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <input type="submit"
+                               class="btn btn-primary btn-block btn-flat"
+                               value="{{ 'register.register_button_label'|trans }}"
+                        />
+                    </div>
+                </div>
+            </form>
+
+            <div class="social-auth-links text-center">
+                <p>- {{ 'register.or_label'|trans }} -</p>
+
+                <a href="#" class="btn btn-block btn-social btn-google btn-flat">
+                    <i class="fa fa-google-plus"></i>
+                    {{ 'register.google_button_label'|trans }}
+                </a>
+            </div>
+
+            <a href="{{ path('fos_user_security_login') }}" class="text-center">
+                {{ 'register.login_link_text'|trans }}
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block pageExtraJavaScripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('build/js/register/register.js') }}"></script>
+{% endblock %}
