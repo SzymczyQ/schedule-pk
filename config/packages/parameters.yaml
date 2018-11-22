@@ -1,0 +1,4 @@
+parameters:
+    locale: 'pl'
+    application:
+        name: 'Podział PK'

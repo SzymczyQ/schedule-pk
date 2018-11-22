@@ -11,12 +11,12 @@
         <meta name="keywords" content="">
         <meta name="author" content="">
         <meta name="robots" content="{% block pageMetaRobotsTag %}{{ 'all,follow' }}{% endblock %}">
-        <meta name="googlebot" content="{% block pageMetaGooglebotag %}{{ 'index,follow,snippet,archive' }}{% endblock %}">
+        <meta name="googlebot" content="{% block pageMetaGooglebot %}{{ 'index,follow,snippet,archive' }}{% endblock %}">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     {% endblock %}
 
     {# PAGE TITLE #}
-    <title>{% spaceless %}{% block pageTitle %}{% endblock %}{% endspaceless %} | </title>
+    <title>{% spaceless %}{% block pageTitle %}{% endblock %}{% endspaceless %} | {{ application.name }}</title>
 
     {# PPAGE STYLESHEETS #}
     {% block pageStylesheets %}

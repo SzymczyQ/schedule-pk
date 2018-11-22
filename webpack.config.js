@@ -5,7 +5,7 @@ Encore
     .setPublicPath('/build')
 
     // Images trick
-    .addEntry('prod/js/images', './assets/js/images.js')
+    .addEntry('js/images', './assets/js/images.js')
 
     // Javascript files
     .addEntry('js/respond', './assets/js/respond.min.js')
@@ -16,6 +16,9 @@ Encore
     .addEntry('js/jquery.slimscroll', './assets/js/jquery.slimscroll.js')
     .addEntry('js/adminlte', './assets/js/adminlte.js')
     .addEntry('js/demo', './assets/js/demo.js')
+
+    // Login page
+    .addEntry('js/login/login', './assets/js/login/login.js')
 
     .addStyleEntry('css/bootstrap', './assets/css/bootstrap.css')
     .addStyleEntry('css/font-awesome', './assets/css/font-awesome.css')
@@ -39,8 +42,12 @@ Encore
     //     css: '[name].[hash:8].css',
     // })
 
-    // uncomment if you're having problems with a jQuery plugin
-    //.autoProvidejQuery()
+    .autoProvidejQuery()
+    .autoProvideVariables({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',
+    })
 ;
 
 module.exports = Encore.getWebpackConfig();

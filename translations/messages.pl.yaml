@@ -1,0 +1,10 @@
+# Login page
+login:
+    page_title: 'Logowanie'
+    register_link_text: 'Zarejestruj nowe konto'
+    login_button_label: 'Zaloguj'
+    email_input_placeholder: 'Adres email...'
+    password_input_placeholder: 'Hasło...'
+    login_box_title: 'Zaloguj się, aby rozpocząć sesję'
+    or_label: 'LUB'
+    google_button_label: 'Zaloguj się przy użyciu Google'
