@@ -42,7 +42,9 @@ class OAuthUserManager
         $user->setEmail($userResponse->getEmail());
         $user->setPassword('google');
         $user->setGoogleId($userData['id'] ?? null);
+        $user->setEnabled(true);
         $user->setLastLogin(new \DateTime());
+
         $user->addRole('ROLE_OAUTH_USER');
 
         $this->entityManager->persist($user);
