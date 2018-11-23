@@ -18,6 +18,8 @@ class User extends BaseUser
     use TimestampableEntity;
 
     /**
+     * @var int|null
+     *
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -25,10 +27,33 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @var string|null
+     *
+     * @ORM\Column(type="string", name="google_id", length=255, nullable=true)
+     */
+    protected $googleId;
+
+    /**
      * User constructor.
      */
     public function __construct()
     {
         parent::__construct();
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getGoogleId(): ?string
+    {
+        return $this->googleId;
+    }
+
+    /**
+     * @param null|string $googleId
+     */
+    public function setGoogleId(?string $googleId): void
+    {
+        $this->googleId = $googleId;
     }
 }

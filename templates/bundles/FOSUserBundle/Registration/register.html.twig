@@ -102,7 +102,8 @@
             <div class="social-auth-links text-center">
                 <p>- {{ 'register.or_label'|trans }} -</p>
 
-                <a href="#" class="btn btn-block btn-social btn-google btn-flat">
+                <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google'}) }}"
+                   class="btn btn-block btn-social btn-google btn-flat">
                     <i class="fa fa-google-plus"></i>
                     {{ 'register.google_button_label'|trans }}
                 </a>
