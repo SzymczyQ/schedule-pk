@@ -38,8 +38,10 @@ class OAuthUserManager
         $userData = $userResponse->getData();
 
         $user = new User();
-        $user->setUsername($userResponse->getNickname());
+        $user->setUsername($userResponse->getEmail());
         $user->setEmail($userResponse->getEmail());
+        $user->setFirstName($userResponse->getFirstName());
+        $user->setLastName($userResponse->getLastName());
         $user->setPassword('google');
         $user->setGoogleId($userData['id'] ?? null);
         $user->setEnabled(true);

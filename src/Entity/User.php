@@ -29,17 +29,23 @@ class User extends BaseUser
     /**
      * @var string|null
      *
+     * @ORM\Column(type="string", name="first_name", length=255, nullable=true)
+     */
+    private $firstName;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(type="string", name="last_name", length=255, nullable=true)
+     */
+    private $lastName;
+
+    /**
+     * @var string|null
+     *
      * @ORM\Column(type="string", name="google_id", length=255, nullable=true)
      */
     protected $googleId;
-
-    /**
-     * User constructor.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
 
     /**
      * @return null|string
@@ -55,5 +61,37 @@ class User extends BaseUser
     public function setGoogleId(?string $googleId): void
     {
         $this->googleId = $googleId;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param null|string $firstName
+     */
+    public function setFirstName(?string $firstName): void
+    {
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param null|string $lastName
+     */
+    public function setLastName(?string $lastName): void
+    {
+        $this->lastName = $lastName;
     }
 }
