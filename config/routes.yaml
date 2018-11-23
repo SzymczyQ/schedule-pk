@@ -7,18 +7,6 @@ fos_user_registration_confirmed:
     path: /register/confirmed
     controller: App\Controller\RegistrationController::confirmedAction
 
-# HWIOAuthBundle routes
-hwi_oauth_redirect:
-    resource: "@HWIOAuthBundle/Resources/config/routing/redirect_41.xml"
-    prefix:   /connect
-
-hwi_oauth_connect:
-    resource: "@HWIOAuthBundle/Resources/config/routing/connect_41.xml"
-    prefix:   /connect
-
-hwi_oauth_login:
-    resource: "@HWIOAuthBundle/Resources/config/routing/login_41.xml"
-    prefix:   /login
-
+# Google login routing
 google_login:
     path: /login/check-google

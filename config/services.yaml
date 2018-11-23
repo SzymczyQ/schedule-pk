@@ -26,9 +26,11 @@ services:
             - '@FOS\UserBundle\Model\UserManagerInterface'
             - '@security.token_storage'
 
+    App\Service\Manager\OAuthUserManager:
+
     # User provider service
     App\Service\UserProvider:
         arguments:
             - '@fos_user.user_manager'
             - { google: '%env(GOOGLE_ID)%' }
-            - '@doctrine'
+            - '@App\Service\Manager\OAuthUserManager'

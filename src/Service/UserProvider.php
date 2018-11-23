@@ -2,9 +2,10 @@
 
 namespace App\Service;
 
+use App\Entity\User;
+use App\Service\Manager\OAuthUserManager;
 use FOS\UserBundle\Model\UserManagerInterface;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
-use Symfony\Bridge\Doctrine\RegistryInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider;
 
 /**
@@ -14,26 +15,45 @@ use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider;
 class UserProvider extends FOSUBUserProvider
 {
     /**
-     * @var RegistryInterface $registry
+     * @var OAuthUserManager $oAuthUserManager
      */
-    private $registry;
+    private $oAuthUserManager;
 
     /**
      * UserProvider constructor.
      * @param UserManagerInterface $userManager
      * @param array $properties
-     * @param RegistryInterface $registry
+     * @param OAuthUserManager $oAuthUserManager
      */
-    public function __construct(UserManagerInterface $userManager, array $properties, RegistryInterface $registry)
-    {
+    public function __construct(
+        UserManagerInterface $userManager,
+        array $properties,
+        OAuthUserManager $oAuthUserManager
+    ) {
         parent::__construct($userManager, $properties);
 
-        $this->registry = $registry;
+        $this->oAuthUserManager = $oAuthUserManager;
     }
 
-    public function loadUserByOAuthUserResponse(UserResponseInterface $response)
+    /**
+     * @param UserResponseInterface $response
+     * @return User
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function loadUserByOAuthUserResponse(UserResponseInterface $response): User
     {
-        dump($response);
-        die();
+        $user = $this->oAuthUserManager
+            ->findUserByEmail(
+                $response->getEmail()
+            );
+
+        if ($user instanceof User) {
+            return $this->oAuthUserManager
+                ->updateUserLastLogin($user);
+        }
+
+        return $this->oAuthUserManager
+            ->createUserFromOAuthUserResponse($response);
     }
 }
