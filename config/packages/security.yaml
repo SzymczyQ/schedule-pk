@@ -23,7 +23,7 @@ security:
             anonymous:    true
             oauth:
                 resource_owners:
-                    google:             "/login/check-google"
+                    google: '/login/check-google'
                 login_path: /login
                 use_forward: false
                 failure_path: /login
@@ -37,4 +37,5 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
 
+        - { path: ^/connect/google, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, role: ROLE_USER }
