@@ -1,4 +1,5 @@
 var Encore = require('@symfony/webpack-encore');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 Encore
     .setOutputPath('public/build/')
@@ -6,16 +7,6 @@ Encore
 
     // Images trick
     .addEntry('js/images', './assets/js/images.js')
-
-    // Javascript files
-    .addEntry('js/respond', './assets/js/respond.min.js')
-    .addEntry('js/html5shiv', './assets/js/html5shiv.min.js')
-    .addEntry('js/bootstrap', './assets/js/bootstrap.js')
-    .addEntry('js/fastclick', './assets/js/fastclick.js')
-    .addEntry('js/jquery', './assets/js/jquery.js')
-    .addEntry('js/jquery.slimscroll', './assets/js/jquery.slimscroll.js')
-    .addEntry('js/adminlte', './assets/js/adminlte.js')
-    .addEntry('js/demo', './assets/js/demo.js')
 
     // Login page
     .addEntry('js/login/login', './assets/js/login/login.js')
@@ -48,6 +39,16 @@ Encore
         jQuery: 'jquery',
         'window.jQuery': 'jquery',
     })
+
+    .addPlugin(new CopyWebpackPlugin([
+        { from: './assets/js/respond.min.js', to: 'js/' },
+        { from: './assets/js/html5shiv.min.js', to: 'js/' },
+        { from: './assets/js/bootstrap.js', to: 'js/' },
+        { from: './assets/js/fastclick.js', to: 'js/' },
+        { from: './assets/js/jquery.slimscroll.js', to: 'js/' },
+        { from: './assets/js/jquery.js', to: 'js/' },
+        { from: './assets/js/adminlte.js', to: 'js/' },
+    ]))
 ;
 
 module.exports = Encore.getWebpackConfig();

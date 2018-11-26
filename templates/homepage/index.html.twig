@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block pageTitle %}
-    {{ 'login.page_title'|trans }}
+    {{ 'homepage.page_title'|trans }}
 {% endblock %}
 
 {% block pageBody %}
-    {{ dump(app.user) }}
+    {{ parent() }}
 {% endblock %}

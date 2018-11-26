@@ -22,6 +22,36 @@ register:
     retype_password_input_placeholder: 'Powtórz hasło...'
     username_input_placeholder: 'Nazwa użytkownika...'
 
+# General translations
+general:
+    toggle_navigation: 'Zwiń nawigcję'
+    avatar_alt: 'Avatar użytkownika'
+    footer_authors: 'Autorzy: Piotr Najder, Mateusz Nowak, Michał Piszczek i Marcin Szymczyk'
+    last_login: 'Ostatnie logowanie'
+    logout_button_label: 'Wyloguj'
+    profile_button_label: 'Profil'
+    available: 'Dostępny'
+    main_menu: 'Menu'
+    main_page: 'Strona główna'
+    user_profile: 'Panel użytkownika'
+
 # Homepage
 homepage:
     page_title: 'Strona główna'
+
+# User profile
+user:
+    page_title: 'Panel użytkownika'
+    settings_tab: 'Dane użytkownika'
+
+# User info form
+user_info_form:
+    form_label:
+        first_name: 'Imię'
+        last_name: 'Nazwisko'
+        email: 'Adres email'
+        submit: 'Zapisz'
+    form_placeholder:
+        first_name: 'Wpisz imię...'
+        last_name: 'Wpisz nazwisko...'
+        email: 'Wpisz adres email...'

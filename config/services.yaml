@@ -26,6 +26,7 @@ services:
             - '@FOS\UserBundle\Model\UserManagerInterface'
             - '@security.token_storage'
 
+    # Oauth user manager class
     App\Service\Manager\OAuthUserManager:
 
     # User provider service

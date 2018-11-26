@@ -1,5 +1,3 @@
-{% trans_default_domain 'main' %}
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -67,10 +65,162 @@
 </head>
 
 
-<body class="hold-transition {% block pageBodyClass %}{{ 'skin-green' }}{% endblock %}">
+<body class="sidebar-mini {% block pageBodyClass %}{{ 'skin-green' }}{% endblock %}">
 
-{# PAGE BODY BLOCK #}
-{% block pageBody %}{% endblock %}
+    {# PAGE BODY BLOCK #}
+    {% block pageBody %}
+
+        {# SET USERNAME #}
+        {% if app.user.firstname is not empty and app.user.lastname is not empty %}
+            {% set username =  app.user.firstname ~ ' ' ~ app.user.lastname %}
+        {% else %}
+            {% set username = app.user.username %}
+        {% endif %}
+
+        {% set avatar =  asset('build/images/avatar.png') %}
+
+        <div class="wrapper">
+            {# TOP HEADER #}
+            {% block pageHeader %}
+                <header class="main-header">
+                    <a href="{{ path('homepage') }}" class="logo">
+                        <span class="logo-mini">
+                            <b>{{ application.short_name }}</b>
+                        </span>
+                        <span class="logo-lg">
+                            <b>{{ application.name }}</b>
+                        </span>
+                    </a>
+
+                    {# NAVBAR AND USER PANELL #}
+                    <nav class="navbar navbar-static-top" role="navigation">
+
+                        {# SIDEBAR TOGGLE BUTTON #}
+                        <a href="javascript:void(0)" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                            <span class="sr-only">{{ 'general.toggle_navigation'|trans }}</span>
+                        </a>
+
+                        {# NAVBAR RIGHT MENU #}
+                        <div class="navbar-custom-menu">
+                            <ul class="nav navbar-nav">
+
+                                {# USER ACCOUNT MENU #}
+                                <li class="dropdown user user-menu">
+                                    <a href="{{ path('user') }}" class="dropdown-toggle" data-toggle="dropdown">
+                                        <img src="{{ avatar }}" class="user-image" alt="{{ 'general.user_image'|trans }}">
+                                        <span class="hidden-xs">{{ username }}</span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="user-header">
+                                            <img src="{{ avatar }}" class="img-circle" alt="{{ 'general.user_image'|trans }}">
+                                            <p>{{ username }}
+                                                <small>
+                                                    {{ 'general.last_login'|trans }}:
+                                                    {{ app.user.lastLogin|date('Y-m-d H:i:s') }}
+                                                </small>
+                                            </p>
+                                        </li>
+
+                                        <li class="user-footer">
+                                            <div class="pull-left">
+                                                <a href="{{ path('user') }}" class="btn btn-default btn-flat">
+                                                    {{ 'general.profile_button_label'|trans }}
+                                                </a>
+                                            </div>
+                                            <div class="pull-right">
+                                                <a href="{{ path('fos_user_security_logout') }}"
+                                                   class="btn btn-default btn-flat"
+                                                >
+                                                    {{ 'general.logout_button_label'|trans }}
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </header>
+            {% endblock %}
+
+            {# LEFT PANEL #}
+            {% block pageLeftPanel %}
+                <aside class="main-sidebar">
+                    {# LEFT MENU PANEL #}
+                    <section class="sidebar">
+                        <div class="user-panel">
+                            <div class="pull-left image">
+                                <img src="{{ avatar }}" class="img-circle" alt="{{ 'general.user_image'|trans }}">
+                            </div>
+                            <div class="pull-left info">
+                                <p><a href="{{ path('user') }}">{{ username }}</a></p>
+                                <a href="{{ path('user') }}">
+                                    <i class="fa fa-circle text-success"></i>
+                                    {{ 'general.available'|trans }}
+                                </a>
+                            </div>
+                        </div>
+
+                        {# LEFT PANEL MENU#}
+                        <ul class="sidebar-menu">
+                            <li class="header">{{ 'general.main_menu'|trans|upper }}</li>
+
+                            <li class="treeview">
+                                <a href="{{ path('homepage') }}">
+                                    <i class="fa fa-globe"></i> <span>{{ 'general.main_page'|trans }}</span>
+                                </a>
+                            </li>
+
+                            <li class="treeview">
+                                <a href="{{ path('user') }}">
+                                    <i class="fa fa-user"></i> <span>{{ 'general.user_profile'|trans }}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+                </aside>
+            {% endblock %}
+
+            {# CONTENT WRAPPER #}
+            <div class="content-wrapper">
+
+                {# TOP DESCRIPTION #}
+                {% block pageContentDescription %}
+                    <section class="content-header">
+                        <h1>
+                            {% block pageContentDescriptionHeader %}{% endblock %}
+                            <small>{% block pageContentDescriptionSmall %}{% endblock %}</small>
+                        </h1>
+
+                        {# BREDCRUMB #}
+                        {% block pageContentDescriptionBreadcrumb %}
+                            <ol class="breadcrumb">
+                                {% block pageContentDescriptionBreadcrumbContent %}{% endblock %}
+                            </ol>
+                        {% endblock %}
+                    </section>
+                {% endblock %}
+
+                {# PAGE CONTENT #}
+                <section class="content">
+                    {% block pageContent %}{% endblock %}
+                </section>
+            </div>
+
+            {# PAGE FOOTER #}
+            {% block pageFooter %}
+                <footer class="main-footer">
+                    <div class="pull-right hidden-xs">
+                        {{ 'general.footer_authors'|trans }}
+                    </div>
+                    &copy; {{ 'now'|date('Y') }}. {{ application.name }}
+                </footer>
+            {% endblock %}
+
+            <div class="control-sidebar-bg"></div>
+        </div>
+
+    {% endblock %}
 
 {# JAVASCRIPT EXTRA SCRIPTS #}
 {% block pageExtraJavaScripts %}
@@ -79,7 +229,6 @@
     <script src="{{ asset('build/js/jquery.slimscroll.js') }}"></script>
     <script src="{{ asset('build/js/fastclick.js') }}"></script>
     <script src="{{ asset('build/js/adminlte.js') }}"></script>
-    <script src="{{ asset('build/js/demo.js') }}"></script>
 {% endblock %}
 
 </body>

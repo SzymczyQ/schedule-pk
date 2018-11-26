@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block pageTitle %}
+    {{ 'user.page_title'|trans }}
+{% endblock %}
+
+{% block pageContentDescriptionHeader %}
+    {{ 'user.page_title'|trans }}
+{% endblock %}
+
+{% block pageContent %}
+    <div class="row">
+        <div class="col-md-3">
+            {% include 'user/user_box.html.twig' %}
+        </div>
+
+        <div class="col-md-9">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#settings" data-toggle="tab">
+                            {{ 'user.settings_tab'|trans }}
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="settings">
+                        {{ form_start(userInfoForm, {'attr': {'class': 'form-horizontal'}}) }}
+
+                            {# INCLUDE FORM TOKEN #}
+                            {{ form_row(userInfoForm._token) }}
+
+                            <div class="form-group">
+                                {% set firstNameVars = userInfoForm.firstName.vars %}
+                                <label for="{{ firstNameVars.id }}" class="col-sm-2 control-label">
+                                    {{ firstNameVars.label }}
+                                </label>
+
+                                <div class="col-sm-10">
+                                    <input type="text"
+                                           class="form-control"
+                                           name="{{ firstNameVars.full_name }}"
+                                           id="{{ firstNameVars.id }}"
+                                           placeholder="{{ firstNameVars.attr.placeholder }}"
+                                           value="{{ firstNameVars.value }}"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {% set lastNameVars = userInfoForm.lastName.vars %}
+                                <label for="{{ lastNameVars.id }}" class="col-sm-2 control-label">
+                                    {{ lastNameVars.label }}
+                                </label>
+
+                                <div class="col-sm-10">
+                                    <input type="text"
+                                           class="form-control"
+                                           name="{{ lastNameVars.full_name }}"
+                                           id="{{ lastNameVars.id }}"
+                                           placeholder="{{ lastNameVars.attr.placeholder }}"
+                                           value="{{ lastNameVars.value }}"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {% set emailVars = userInfoForm.email.vars %}
+                                <label for="{{ emailVars.id }}" class="col-sm-2 control-label">
+                                    {{ emailVars.label }}
+                                </label>
+
+                                <div class="col-sm-10">
+                                    <input type="email"
+                                           class="form-control"
+                                           name="{{ emailVars.full_name }}"
+                                           id="{{ emailVars.id }}"
+                                           placeholder="{{ emailVars.attr.placeholder }}"
+                                           value="{{ emailVars.value }}"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {% set submitVars = userInfoForm.submit.vars %}
+
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit"
+                                            class="btn btn-danger"
+                                            name="{{ submitVars.full_name }}"
+                                            id="{{ submitVars.id }}"
+                                            value="{{ submitVars.value }}"
+                                    >
+                                        {{ submitVars.label }}
+                                    </button>
+                                </div>
+                            </div>
+
+                        {{ form_end(userInfoForm, {'render_rest': false}) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
