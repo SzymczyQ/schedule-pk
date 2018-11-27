@@ -15,57 +15,28 @@
         </div>
 
         <div class="col-md-9">
-            <div class="nav-tabs-custom">
-                <ul class="nav nav-tabs">
-                    <li class="active">
-                        <a href="#settings" data-toggle="tab">
-                            {{ 'user.settings_tab'|trans }}
-                        </a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="settings">
-                        {% if userInfoForm.vars.errors|length %}
-                            {% for error in userInfoForm.vars.errors %}
-                                <p class="text-danger text-center">
-                                    {{ error.message }}
-                                </p>
-                            {% endfor %}
-                        {% endif %}
+            {{ form_start(userInfoForm, {'attr': {'class': 'form-horizontal'}}) }}
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#user_settings" data-toggle="tab">
+                                {{ 'user.settings_tab'|trans }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#user_school_data" data-toggle="tab">
+                                {{ 'user.user_school_data_tab'|trans }}
+                            </a>
+                        </li>
+                    </ul>
 
-                        {{ form_start(userInfoForm, {'attr': {'class': 'form-horizontal'}}) }}
-
-                            {# INCLUDE FORM TOKEN #}
-                            {{ form_row(userInfoForm._token) }}
-
-                            {% include 'global/forms/default_form_group.html.twig'
-                                with {'field': userInfoForm.firstName} %}
-
-                            {% include 'global/forms/default_form_group.html.twig'
-                                with {'field': userInfoForm.lastName} %}
-
-                            {% include 'global/forms/default_form_group.html.twig'
-                                with {'field': userInfoForm.email} %}
-
-                            <div class="form-group">
-                                {% set submitVars = userInfoForm.submit.vars %}
-
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit"
-                                            class="btn btn-danger"
-                                            name="{{ submitVars.full_name }}"
-                                            id="{{ submitVars.id }}"
-                                            value="{{ submitVars.value }}"
-                                    >
-                                        {{ submitVars.label }}
-                                    </button>
-                                </div>
-                            </div>
-
-                        {{ form_end(userInfoForm, {'render_rest': false}) }}
+                    <div class="tab-content">
+                        {% include 'user/tabs/user_settings.html.twig' %}
+                        {% include 'user/tabs/user_school_data.html.twig' %}
                     </div>
                 </div>
-            </div>
+            {{ form_end(userInfoForm, {'render_rest': false}) }}
         </div>
+
     </div>
 {% endblock %}

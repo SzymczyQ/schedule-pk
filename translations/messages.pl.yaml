@@ -49,6 +49,7 @@ homepage:
 user:
     page_title: 'Panel użytkownika'
     settings_tab: 'Dane użytkownika'
+    user_school_data_tab: 'Ustawienia studiów'
 
 # User info form
 user_info_form:
@@ -64,3 +65,26 @@ user_info_form:
         first_name: 'Wpisz imię...'
         last_name: 'Wpisz nazwisko...'
         email: 'Wpisz adres email...'
+
+user_school_info_form:
+    choices:
+        first_degree: 'Pierwszy stopień'
+        second_degree: 'Drugi stopień'
+        first_year: 'Pierwszy rok'
+        second_year: 'Drugi rok'
+        third_year: 'Trzeci rok'
+        fourth_year: 'Czwarty rok'
+        first_subgroup: 'Pierwsza podgrupa'
+        second_subgroup: 'Druga podgrupa'
+    form_label:
+        faculty: 'Wydział'
+        degree: 'Stopień'
+        year: 'Rok'
+        group: 'Grupa'
+        subgroup: 'Podgrupa'
+    form_placeholder:
+        faculty: 'Wpisz wydział...'
+        degree: 'Wybierz stopień...'
+        year: 'Wybierz rok...'
+        group: 'Wpisz grupę...'
+        subgroup: 'Wybierz podgrupę...'

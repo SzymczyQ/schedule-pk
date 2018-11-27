@@ -1,0 +1,14 @@
+<div class="tab-pane" id="user_school_data">
+    <ul id="question-entry-list"
+        data-widget-tags="{{ '<li></li>'|e }}"
+        data-prototype="{% filter escape %}{% endfilter %}"
+    >
+        {% for userSchoolInfo in userInfoForm.userSchoolInfos %}
+            <li></li>
+        {% endfor %}
+    </ul>
+
+    {#<button type="button"#}
+            {#class=""#}
+            {#data-list="#question-entry-list">Add</button>#}
+</div>

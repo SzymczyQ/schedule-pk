@@ -1,0 +1,36 @@
+<div class="tab-pane active" id="user_settings">
+    {% if userInfoForm.vars.errors|length %}
+        {% for error in userInfoForm.vars.errors %}
+            <p class="text-danger text-center">
+                {{ error.message }}
+            </p>
+        {% endfor %}
+    {% endif %}
+
+    {# INCLUDE FORM TOKEN #}
+    {{ form_row(userInfoForm._token) }}
+
+    {% include 'global/forms/default_form_group.html.twig'
+        with {'field': userInfoForm.firstName} %}
+
+    {% include 'global/forms/default_form_group.html.twig'
+        with {'field': userInfoForm.lastName} %}
+
+    {% include 'global/forms/default_form_group.html.twig'
+        with {'field': userInfoForm.email} %}
+
+    <div class="form-group">
+        {% set submitVars = userInfoForm.submit.vars %}
+
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit"
+                    class="btn btn-danger"
+                    name="{{ submitVars.full_name }}"
+                    id="{{ submitVars.id }}"
+                    value="{{ submitVars.value }}"
+            >
+                {{ submitVars.label }}
+            </button>
+        </div>
+    </div>
+</div>

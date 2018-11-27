@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
@@ -11,7 +13,13 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
  * @package App\Entity
  *
  * @ORM\Entity
- * @ORM\Table(name="user")
+ * @ORM\Table(
+ *     name="user",
+ *     uniqueConstraints={
+ *          @ORM\UniqueConstraint(name="unique_index_google_id", columns={"google_id"})
+ *     },
+ * )
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User extends BaseUser
 {
@@ -25,6 +33,20 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * One User has many UserSchoolInfos. This is the inverse side.
+     *
+     * @var UserSchoolInfo[]|null $userSchoolInfos
+     *
+     * @ORM\OneToMany(
+     *     targetEntity="App\Entity\UserSchoolInfo",
+     *     mappedBy="user",
+     *     cascade={"persist", "remove"},
+     *     orphanRemoval=TRUE
+     * )
+     */
+    private $userSchoolInfos;
 
     /**
      * @var string|null
@@ -46,6 +68,54 @@ class User extends BaseUser
      * @ORM\Column(type="string", name="google_id", length=255, nullable=true)
      */
     protected $googleId;
+
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->userSchoolInfos = new ArrayCollection();
+    }
+
+    /**
+     * @return Collection|null
+     */
+    public function getUserSchoolInfos(): ?Collection
+    {
+        return $this->userSchoolInfos;
+    }
+
+    /**
+     * @param Collection|null $userSchoolInfos
+     */
+    public function setUserSchoolInfos(?Collection $userSchoolInfos): void
+    {
+        $this->userSchoolInfos = $userSchoolInfos;
+    }
+
+    /**
+     * @param UserSchoolInfo $userSchoolInfo
+     */
+    public function addUserSchoolInfo(UserSchoolInfo $userSchoolInfo): void
+    {
+        if (!$this->userSchoolInfos->contains($userSchoolInfo)) {
+            $this->userSchoolInfos->add($userSchoolInfo);
+            $userSchoolInfo->setUser($this);
+        }
+    }
+
+    /**
+     * @param UserSchoolInfo $userSchoolInfo
+     */
+    public function removePcQuestionEntry(UserSchoolInfo $userSchoolInfo): void
+    {
+        if ($this->userSchoolInfos->contains($userSchoolInfo)) {
+            $this->userSchoolInfos->removeElement($userSchoolInfo);
+            $userSchoolInfo->setUser(null);
+        }
+    }
 
     /**
      * @return null|string

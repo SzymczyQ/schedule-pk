@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -13,6 +14,7 @@ use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Valid;
 
 /**
  * Class UserInfoFormType
@@ -79,6 +81,18 @@ class UserInfoFormType extends AbstractType
                     ])
                 ]
             ])
+            ->add('userSchoolInfos', CollectionType::class, [
+                'entry_type' => UserSchoolInfoFormType::class,
+                'entry_options' => [
+                    'label' => false,
+                ],
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+                'prototype' => true,
+                'constraints' => new Valid()
+            ])
+
             ->add('submit', SubmitType::class, [
                 'label' => $this->translator->trans('user_info_form.form_label.submit'),
             ])
