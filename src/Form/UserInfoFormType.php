@@ -38,7 +38,7 @@ class UserInfoFormType extends AbstractType
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('firstName', TextType::class, [
@@ -81,7 +81,7 @@ class UserInfoFormType extends AbstractType
             ])
             ->add('submit', SubmitType::class, [
                 'label' => $this->translator->trans('user_info_form.form_label.submit'),
-            ]);
+            ])
         ;
     }
 
