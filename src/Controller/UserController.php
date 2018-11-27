@@ -66,13 +66,20 @@ class UserController extends Controller
         );
 
         $userInfoForm->handleRequest($request);
-        if ($userInfoForm->isSubmitted() && $userInfoForm->isValid()) {
-            $this->entityManager->flush();
+        if ($userInfoForm->isSubmitted()) {
+            if ($userInfoForm->isValid()) {
+                $this->entityManager->flush();
 
-            $this->flashBagManager->add(
-                FlashBagManager::TYPE_SUCCESS,
-                $this->translator->trans('user_info_form.messages.success')
-            );
+                $this->flashBagManager->add(
+                    FlashBagManager::TYPE_SUCCESS,
+                    $this->translator->trans('user_info_form.messages.success')
+                );
+            } else {
+                $this->flashBagManager->add(
+                    FlashBagManager::TYPE_WARNING,
+                    $this->translator->trans('user_info_form.messages.warning')
+                );
+            }
         }
 
         return $this->render('user/index.html.twig', [

@@ -54,6 +54,7 @@ user:
 user_info_form:
     messages:
         success: 'Dane zostały zapisane'
+        warning: 'Formularz zawiera błędy'
     form_label:
         first_name: 'Imię'
         last_name: 'Nazwisko'
