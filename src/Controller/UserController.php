@@ -3,12 +3,14 @@
 namespace App\Controller;
 
 use App\Form\UserInfoFormType;
+use App\Service\Manager\FlashBagManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Class UserController
@@ -24,12 +26,29 @@ class UserController extends Controller
     private $entityManager;
 
     /**
+     * @var FlashBagManager $flashBagManager
+     */
+    private $flashBagManager;
+
+    /**
+     * @var TranslatorInterface $translator
+     */
+    private $translator;
+
+    /**
      * UserController constructor.
      * @param EntityManagerInterface $entityManager
+     * @param FlashBagManager $flashBagManager
+     * @param TranslatorInterface $translator
      */
-    public function __construct(EntityManagerInterface $entityManager)
-    {
+    public function __construct(
+        EntityManagerInterface $entityManager,
+        FlashBagManager $flashBagManager,
+        TranslatorInterface $translator
+    ) {
         $this->entityManager = $entityManager;
+        $this->flashBagManager = $flashBagManager;
+        $this->translator = $translator;
     }
 
     /**
@@ -49,6 +68,11 @@ class UserController extends Controller
         $userInfoForm->handleRequest($request);
         if ($userInfoForm->isSubmitted() && $userInfoForm->isValid()) {
             $this->entityManager->flush();
+
+            $this->flashBagManager->add(
+                FlashBagManager::TYPE_SUCCESS,
+                $this->translator->trans('user_info_form.messages.success')
+            );
         }
 
         return $this->render('user/index.html.twig', [

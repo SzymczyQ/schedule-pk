@@ -1,0 +1,9 @@
+<div id="notifications_container"
+     data-success-title="{{ 'general.toastr.title.success'|trans }}"
+     data-error-title="{{ 'general.toastr.title.error'|trans }}"
+     data-info-title="{{ 'general.toastr.title.info'|trans }}"
+     data-warning-title="{{ 'general.toastr.title.warning'|trans }}"
+     data-notifications="{{ app.session.flashbag.all()|json_encode }}">
+</div>
+
+<script src="{{ asset('build/js/notifications/notifications.js') }}"></script>

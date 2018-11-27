@@ -34,6 +34,12 @@ general:
     main_menu: 'Menu'
     main_page: 'Strona główna'
     user_profile: 'Panel użytkownika'
+    toastr:
+        title:
+            success: 'Sukces!'
+            error: 'Błąd!'
+            warning: 'Uwaga!'
+            info: 'Informacja!'
 
 # Homepage
 homepage:
@@ -46,6 +52,8 @@ user:
 
 # User info form
 user_info_form:
+    messages:
+        success: 'Dane zostały zapisane'
     form_label:
         first_name: 'Imię'
         last_name: 'Nazwisko'
