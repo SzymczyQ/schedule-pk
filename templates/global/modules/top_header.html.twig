@@ -1,0 +1,59 @@
+<header class="main-header">
+    <a href="{{ path('homepage') }}" class="logo">
+        <span class="logo-mini">
+            <b>{{ application.short_name }}</b>
+        </span>
+        <span class="logo-lg">
+            <b>{{ application.name }}</b>
+        </span>
+    </a>
+
+    {# NAVBAR AND USER PANELL #}
+    <nav class="navbar navbar-static-top" role="navigation">
+
+        {# SIDEBAR TOGGLE BUTTON #}
+        <a href="javascript:void(0)" class="sidebar-toggle" data-toggle="push-menu" role="button">
+            <span class="sr-only">{{ 'general.toggle_navigation'|trans }}</span>
+        </a>
+
+        {# NAVBAR RIGHT MENU #}
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+
+                {# USER ACCOUNT MENU #}
+                <li class="dropdown user user-menu">
+                    <a href="{{ path('user') }}" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="{{ avatar }}" class="user-image" alt="{{ 'general.user_image'|trans }}">
+                        <span class="hidden-xs">{{ username }}</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="user-header">
+                            <img src="{{ avatar }}" class="img-circle" alt="{{ 'general.user_image'|trans }}">
+                            <p>{{ username }}
+                                <small>
+                                    {{ 'general.last_login'|trans }}:
+                                    {{ app.user.lastLogin|date('Y-m-d H:i:s') }}
+                                </small>
+                            </p>
+                        </li>
+
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="{{ path('user') }}" class="btn btn-default btn-flat">
+                                    {{ 'general.profile_button_label'|trans }}
+                                </a>
+                            </div>
+                            <div class="pull-right">
+                                <a href="{{ path('fos_user_security_logout') }}"
+                                   class="btn btn-default btn-flat"
+                                >
+                                    {{ 'general.logout_button_label'|trans }}
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

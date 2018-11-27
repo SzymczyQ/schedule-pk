@@ -1,0 +1,21 @@
+{# LEFT PANEL MENU#}
+
+{% set route = app.request.get('_route') %}
+
+<ul class="sidebar-menu">
+    <li class="header">{{ 'general.main_menu'|trans|upper }}</li>
+
+    <li class="treeview {{ route == 'homepage' ? 'active' }}">
+        <a href="{{ path('homepage') }}">
+            <i class="fa fa-globe"></i>
+            <span>{{ 'general.main_page'|trans }}</span>
+        </a>
+    </li>
+
+    <li class="treeview {{ route == 'user' ? 'active' }}">
+        <a href="{{ path('user') }}">
+            <i class="fa fa-user"></i>
+            <span>{{ 'general.user_profile'|trans }}</span>
+        </a>
+    </li>
+</ul>

@@ -1,0 +1,20 @@
+<aside class="main-sidebar">
+    {# LEFT MENU PANEL #}
+    <section class="sidebar">
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="{{ avatar }}" class="img-circle" alt="{{ 'general.user_image'|trans }}">
+            </div>
+            <div class="pull-left info">
+                <p><a href="{{ path('user') }}">{{ username }}</a></p>
+                <a href="{{ path('user') }}">
+                    <i class="fa fa-circle text-success"></i>
+                    {{ 'general.available'|trans }}
+                </a>
+            </div>
+        </div>
+
+        {# LEFT PANEL MENU#}
+        {% include 'global/modules/left_panel_menu.html.twig' %}
+    </section>
+</aside>
