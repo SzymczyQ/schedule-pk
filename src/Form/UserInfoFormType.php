@@ -50,7 +50,6 @@ class UserInfoFormType extends AbstractType
                 'label' => $this->translator->trans('user_info_form.form_label.first_name'),
                 'required' => false,
                 'constraints' => [
-                    new Email(),
                     new Length([
                         'min' => 3,
                         'max' => 180
