@@ -48,7 +48,9 @@ class UserInfoFormType extends AbstractType
                     'placeholder' => $this->translator->trans('user_info_form.form_placeholder.first_name')
                 ],
                 'label' => $this->translator->trans('user_info_form.form_label.first_name'),
+                'required' => false,
                 'constraints' => [
+                    new Email(),
                     new Length([
                         'min' => 3,
                         'max' => 180
@@ -60,6 +62,7 @@ class UserInfoFormType extends AbstractType
                     'placeholder' => $this->translator->trans('user_info_form.form_placeholder.last_name')
                 ],
                 'label' => $this->translator->trans('user_info_form.form_label.last_name'),
+                'required' => false,
                 'constraints' => [
                     new Length([
                         'min' => 3,

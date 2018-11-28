@@ -40,6 +40,9 @@ general:
             error: 'Błąd!'
             warning: 'Uwaga!'
             info: 'Informacja!'
+    button_label:
+        add_position: 'Dodaj pozycję'
+        remove_position: 'Usuń pozycję'
 
 # Homepage
 homepage:

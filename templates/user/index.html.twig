@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% form_theme userInfoForm 'global/forms/custom_horizontal_layout.html.twig' %}
+
 {% block pageTitle %}
     {{ 'user.page_title'|trans }}
 {% endblock %}
@@ -16,6 +18,9 @@
 
         <div class="col-md-9">
             {{ form_start(userInfoForm, {'attr': {'class': 'form-horizontal'}}) }}
+                {# INCLUDE FORM TOKEN #}
+                {{ form_row(userInfoForm._token) }}
+
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active">
@@ -39,4 +44,10 @@
         </div>
 
     </div>
+{% endblock %}
+
+{% block pageExtraJavaScripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('build/js/user/user.js') }}"></script>
 {% endblock %}

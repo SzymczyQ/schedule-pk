@@ -62,7 +62,7 @@ class UserSchoolInfo
     /**
      * @var string|null $group
      *
-     * @ORM\Column(type="string", name="group", length=255, nullable=false)
+     * @ORM\Column(type="string", name="`group`", length=255, nullable=false)
      */
     private $group;
 

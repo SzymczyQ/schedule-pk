@@ -109,7 +109,7 @@ class User extends BaseUser
     /**
      * @param UserSchoolInfo $userSchoolInfo
      */
-    public function removePcQuestionEntry(UserSchoolInfo $userSchoolInfo): void
+    public function removeUserSchoolInfo(UserSchoolInfo $userSchoolInfo): void
     {
         if ($this->userSchoolInfos->contains($userSchoolInfo)) {
             $this->userSchoolInfos->removeElement($userSchoolInfo);

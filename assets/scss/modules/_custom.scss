@@ -1,0 +1,14 @@
+#user_school_data_list {
+  list-style: none;
+  padding: 0;
+
+  li.user-school-data-list-element {
+    padding-top: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #d2d6de;
+  }
+
+  li.user-school-data-list-element:last-child {
+    border-bottom: none !important;
+  }
+}

@@ -1,14 +1,34 @@
 <div class="tab-pane" id="user_school_data">
-    <ul id="question-entry-list"
+    <ul id="user_school_data_list"
+        class="user-school-data-list"
         data-widget-tags="{{ '<li></li>'|e }}"
-        data-prototype="{% filter escape %}{% endfilter %}"
+        data-prototype="
+            {% filter escape %}
+                {% include 'user/forms/prototypes/user_school_info.html.twig'
+                    with {'form': userInfoForm.userSchoolInfos.vars.prototype} %}
+            {% endfilter %}
+        "
     >
         {% for userSchoolInfo in userInfoForm.userSchoolInfos %}
-            <li></li>
+            <li class="user-school-data-list-element">
+                {% include 'user/forms/prototypes/user_school_info.html.twig'
+                    with {'form': userSchoolInfo} %}
+            </li>
         {% endfor %}
     </ul>
 
-    {#<button type="button"#}
-            {#class=""#}
-            {#data-list="#question-entry-list">Add</button>#}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="col-sm-4 no-padding">
+                <button class="btn btn-block btn-success add-usi" data-list="#user_school_data_list">
+                    {{ 'general.button_label.add_position'|trans }}
+                </button>
+            </div>
+            <div class="col-sm-offset-4 col-sm-4 no-padding">
+                <button type="submit" class="btn btn-block btn-warning">
+                    {{ 'user_info_form.form_label.submit'|trans }}
+                </button>
+            </div>
+        </div>
+    </div>
 </div>

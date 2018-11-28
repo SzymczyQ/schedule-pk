@@ -21,6 +21,9 @@ Encore
     // Login page
     .addEntry('js/login/login', './assets/js/login/login.js')
 
+    // User page
+    .addEntry('js/user/user', './assets/js/user/user.js')
+
     // Project CSS files
     .addStyleEntry('css/bootstrap', './assets/css/bootstrap.css')
     .addStyleEntry('css/font-awesome', './assets/css/font-awesome.css')
