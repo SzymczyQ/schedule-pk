@@ -12,3 +12,11 @@
     border-bottom: none !important;
   }
 }
+
+.add-usi-wrapper {
+  padding: 0;
+
+  @media screen and (max-width: 768px) {
+    padding-bottom: 5px;
+  }
+}
