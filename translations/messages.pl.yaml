@@ -56,13 +56,15 @@ user:
 
 404:
     page_title: 'Błąd 404'
-    page_header: 'Ta przestrzeń jest pusta'
+    page_header: 'Oops!'
     page_description: 'Strona, której szukasz, nie istnieje (błąd 404)'
+    link: 'Strona główna'
 
 error:
     page_title: 'Błąd serwera'
-    page_header: 'Błąd po stronie serwera'
-    page_description: 'Nasi specjaliści już pracują nad rozwiązaniem problemu'
+    page_header: 'Oops!'
+    page_description: 'Nasi specjaliści już pracują nad rozwiązaniem problemu (błąd 500)'
+    link: 'Strona główna'
 
 # User info form
 user_info_form:

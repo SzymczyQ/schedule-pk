@@ -1,28 +1,32 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="pl">
 
-{% block pageTitle %}
-    {{ '404.page_title'|trans }}
-{% endblock %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-{% block pageContentDescriptionHeader %}
-    {{ '404.page_title'|trans }}
-{% endblock %}
+    <title>{{ '404.page_title'|trans }} | {{ application.name }}</title>
 
-{% block pageContentDescriptionBreadcrumb %}{% endblock %}
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{{ asset('build/css/error.css') }}" />
 
-{% block pageContent %}
-    <section class="content">
-        <div class="error-page">
-            <h2 class="headline text-yellow">404</h2>
+    <!--[if lt IE 9]>
+    <script src="{{ asset('build/js/plugins/html5shiv.js') }}"></script>
+    <script src="{{ asset('build/js/plugins/respond.js') }}"></script>
+    <![endif]-->
+</head>
 
-            <div class="error-content">
-                <h3>
-                    <i class="fa fa-warning text-yellow"></i>
-                    {{ '404.page_header'|trans }}
-                </h3>
-
-                <p>{{ '404.page_description'|trans }}</p>
+<body>
+    <div id="notfound">
+        <div class="notfound">
+            <div class="notfound-404">
+                <h1>{{ '404.page_header'|trans }}</h1>
+                <h2>{{ '404.page_description'|trans }}</h2>
             </div>
+            <a href="{{ path('homepage') }}">{{ '404.link'|trans }}</a>
         </div>
-    </section>
-{% endblock %}
+    </div>
+</body>
+
+</html>

@@ -32,6 +32,7 @@ Encore
     .addStyleEntry('css/skin-green', './assets/css/skin-green.css')
 
     // Custom styles
+    .addStyleEntry('css/error', './assets/scss/error.scss')
     .addStyleEntry('css/style', './assets/scss/style.scss')
 
     // Webpack build configuration
