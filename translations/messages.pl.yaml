@@ -34,6 +34,7 @@ general:
     main_menu: 'Menu'
     main_page: 'Strona główna'
     user_profile: 'Panel użytkownika'
+    admin_page: 'Panel administratora'
     toastr:
         title:
             success: 'Sukces!'
@@ -53,6 +54,16 @@ user:
     page_title: 'Panel użytkownika'
     settings_tab: 'Dane użytkownika'
     user_school_data_tab: 'Ustawienia studiów'
+
+admin:
+    page_title: 'Panel administratora'
+    main_box_title: 'Parametry serwisu'
+    table:
+        header_1: 'Token'
+        header_2: 'Wartość'
+        header_3: 'Data dodania'
+        header_4: 'Data modyfikacji'
+        header_5: 'Akcje'
 
 404:
     page_title: 'Błąd 404'

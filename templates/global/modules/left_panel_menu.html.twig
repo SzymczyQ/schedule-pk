@@ -18,4 +18,13 @@
             <span>{{ 'general.user_profile'|trans }}</span>
         </a>
     </li>
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <li class="treeview {{ route == 'admin' ? 'active' }}">
+            <a href="{{ path('admin') }}">
+                <i class="fa fa-cogs"></i>
+                <span>{{ 'general.admin_page'|trans }}</span>
+            </a>
+        </li>
+    {% endif %}
 </ul>
