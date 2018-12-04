@@ -129,6 +129,6 @@ class UserSchoolInfoFormType extends AbstractType
      */
     public function getName(): string
     {
-        return UserSchoolInfoFormType::class;
+        return __CLASS__;
     }
 }

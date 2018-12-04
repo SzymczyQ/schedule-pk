@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme configForm 'global/forms/config_horizontal_layout.html.twig' %}
+
+{% block pageTitle %}
+    {{ 'admin_edit_config.page_title'|trans }}
+{% endblock %}
+
+{% block pageContentDescriptionHeader %}
+    {{ 'admin_edit_config.page_title'|trans }}
+{% endblock %}
+
+{% block pageContentDescriptionBreadcrumb %}{% endblock %}
+
+{% block pageContent %}
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        {{ 'admin_edit_config.edit_box_header'|trans }}
+                    </h3>
+                </div>
+
+                {{ form_start(configForm) }}
+                    <div class="box-body">
+                        {# FORM ERRORS #}
+                        {{ form_errors(configForm) }}
+
+                        {# INCLUDE FORM TOKEN #}
+                        {{ form_row(configForm._token) }}
+
+                        {{ form_row(configForm.token) }}
+                        {{ form_row(configForm.value) }}
+
+                        {# FORM SUBMIT #}
+                        {{ form_row(configForm.submit,
+                            {'label': 'edit_config_form.form_label.submit_edit', 'attr': {'class': 'btn-success'}}) }}
+                    </div>
+                {{ form_end(configForm, {'render_rest': false}) }}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
