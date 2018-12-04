@@ -124,6 +124,7 @@ config_form:
     messages:
         success: 'Dane zostały zapisane'
         warning: 'Formularz zawiera błędy'
+        error: 'Wystąpił nieoczekiwany błąd'
     form_label:
         token: 'Klucz konfiguracji'
         value: 'Wartość klucza'
@@ -143,6 +144,7 @@ edit_config_form:
     messages:
         success: 'Parametr został zmieniony'
         warning: 'Formularz zawiera błędy'
+        error: 'Wystąpił nieoczekiwany błąd'
     form_label:
         submit: 'Edytuj'
         submit_edit: 'Zapisz'

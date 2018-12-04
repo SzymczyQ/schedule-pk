@@ -79,13 +79,21 @@ class AdminController extends Controller
         $configForm->handleRequest($request);
         if ($configForm->isSubmitted()) {
             if ($configForm->isValid()) {
-                $this->entityManager->persist($config);
-                $this->entityManager->flush();
 
-                $this->flashBagManager->add(
-                    FlashBagManager::TYPE_SUCCESS,
-                    $this->translator->trans('config_form.messages.success')
-                );
+                try {
+                    $this->entityManager->persist($config);
+                    $this->entityManager->flush();
+
+                    $this->flashBagManager->add(
+                        FlashBagManager::TYPE_SUCCESS,
+                        $this->translator->trans('config_form.messages.success')
+                    );
+                } catch (\Exception | \Throwable $exception) {
+                    $this->flashBagManager->add(
+                        FlashBagManager::TYPE_ERROR,
+                        $this->translator->trans('config_form.messages.error')
+                    );
+                }
 
                 return $this->redirect(
                     $request->getUri()
@@ -160,12 +168,19 @@ class AdminController extends Controller
         $configForm->handleRequest($request);
         if ($configForm->isSubmitted()) {
             if ($configForm->isValid()) {
-                $this->entityManager->flush();
+                try {
+                    $this->entityManager->flush();
 
-                $this->flashBagManager->add(
-                    FlashBagManager::TYPE_SUCCESS,
-                    $this->translator->trans('edit_config_form.messages.success')
-                );
+                    $this->flashBagManager->add(
+                        FlashBagManager::TYPE_SUCCESS,
+                        $this->translator->trans('edit_config_form.messages.success')
+                    );
+                } catch (\Exception | \Throwable $exception) {
+                    $this->flashBagManager->add(
+                        FlashBagManager::TYPE_ERROR,
+                        $this->translator->trans('edit_config_form.messages.error')
+                    );
+                }
 
                 return $this->redirect(
                     $this->generateUrl('admin')
