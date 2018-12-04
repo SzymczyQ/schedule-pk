@@ -69,7 +69,7 @@
                                 <td>
                                     <form method="post"
                                           action="{{ path('admin_config_edit', {'config': parameter.id}) }}"
-                                          class="col-md-6"
+                                          class="col-md-6 admin-config-edit-form"
                                     >
                                         <button type="submit" class="btn-info btn btn-block">
                                             {{ 'edit_config_form.form_label.submit'|trans }}
@@ -78,7 +78,7 @@
 
                                     <form method="post"
                                           action="{{ path('admin_config_delete', {'config': parameter.id}) }}"
-                                          class="col-md-6"
+                                          class="col-md-6 admin-config-delete-form"
                                     >
                                         <button type="submit" class="btn-danger btn btn-block">
                                             {{ 'delete_config_form.form_label.submit'|trans }}
