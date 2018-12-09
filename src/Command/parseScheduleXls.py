@@ -1,7 +1,7 @@
 import pandas as pd
 import xlrd
 
-def parseSchFile(fName):
+def parseSchFile(fName, year, group):
 
     exc = pd.ExcelFile(xlrd.open_workbook(fName, formatting_info = True), engine = 'xlrd')
     sht = exc.book.sheet_by_index(0)
@@ -12,3 +12,9 @@ def parseSchFile(fName):
 
     ### df now contains all necessery data with unmarged cells
     ### TODO: Parse the df and store the data somehow
+
+    ##
+    ##
+    ##
+
+    ### File parsed to 

@@ -1,0 +1,153 @@
+
+
+[datetime.datetime(2018, 10, 6, 0, 0), '8.00-10.30', 'Jêzyk angielski \nmgr A. £yczko\ns. .S2']
+
+[datetime.datetime(2018, 10, 6, 0, 0), '10.45-13.15', 'Jêzyk angielski \nMgr E.Szabat\ns. S3']
+
+[datetime.datetime(2018, 10, 6, 0, 0), '14.00-16.30', 'Jêzyki i paradygmaty programowania\nDr in¿. P. Poznañski\ns. 1/15 Dzia³ownia']
+
+[datetime.datetime(2018, 10, 7, 0, 0), '8.00-10.30', 'Statystyka  matematyczna   \nWyk³ad dr Jan Pude³ko\nIF s.F201']
+
+[datetime.datetime(2018, 10, 7, 0, 0), '10.45-13.15', 'Statystyka  matematyczna   \nWyk³ad dr Jan Pude³ko\nIF s.F201']
+
+[datetime.datetime(2018, 10, 7, 0, 0), '14.00-16.30', 'Stat.\næw.\nIF s 201']
+
+[datetime.datetime(2018, 10, 7, 0, 0), '16.45-19.15', 'PEiTC\nKS\ns. F020']
+
+[datetime.datetime(2018, 10, 14, 0, 0), '8.00-10.30', 'Statystyka  matematyczna   \nWyk³ad dr Jan Pude³ko\nIF s.F201']
+
+[datetime.datetime(2018, 10, 14, 0, 0), '10.45-13.15', 'Statystyka  matematyczna   \nWyk³ad dr Jan Pude³ko\nIF s.F201']
+
+[datetime.datetime(2018, 10, 14, 0, 0), '14.00-16.30', 'Stat.\næw.\nIF s 201']
+
+[datetime.datetime(2018, 10, 14, 0, 0), '16.45-19.15', 'PEiTC\nKS\ns. F020']
+
+[datetime.datetime(2018, 10, 20, 0, 0), '8.00-10.30', 'Jêzyk angielski \nmgr A. £yczko/E.Szabat\ns. .S2/S3']
+
+[datetime.datetime(2018, 10, 20, 0, 0), '10.45-13.15', 'Jêzyki i paradygmaty programowania\nDr in¿. P. Poznañski\ns. 1/15 Dzia³ownia']
+
+[datetime.datetime(2018, 10, 20, 0, 0), '14.00-16.30', 'Encykopledia Prawa\nMgr Joanna Dudek\ns. 1/15 Dzia³ownia']
+
+[datetime.datetime(2018, 10, 21, 0, 0), '8.00-10.30', 'Statystyka  matematyczna   \nWyk³ad dr Jan Pude³ko\nIF s.F201']
+
+[datetime.datetime(2018, 10, 21, 0, 0), '10.45-13.15', 'Statystyka  matematyczna   \nWyk³ad dr Jan Pude³ko\nIF s.F201']
+
+[datetime.datetime(2018, 10, 21, 0, 0), '14.00-16.30', 'Stat.\næw.\nIF s 201']
+
+[datetime.datetime(2018, 10, 21, 0, 0), '16.45-19.15', 'PEiTC\nKS\ns. F020']
+
+[datetime.datetime(2018, 10, 27, 0, 0), '8.00-10.30', 'Stat.\næw.\nIF s 201']
+
+[datetime.datetime(2018, 10, 27, 0, 0), '10.45-13.15', 'PEiTC\nKS\ns. F020', 'x']
+
+[datetime.datetime(2018, 10, 27, 0, 0), '10.45-13.15', 'PEiTC\nKS\ns. F020']
+
+[datetime.datetime(2018, 10, 27, 0, 0), '14.00-16.30', 'PEiTC\ndr in¿ Tomasz Nabag³o\nIF s.201']
+
+[datetime.datetime(2018, 10, 27, 0, 0), '16.45-19.15', 'PEiTC\nTN\ns. F020']
+
+[datetime.datetime(2018, 10, 28, 0, 0), '8.00-10.30', 'Systemy operacyjne \ndr in¿. A. Jasiñska – Suwada\nwyk³ad\ns. S1 Sto³ówka']
+
+[datetime.datetime(2018, 10, 28, 0, 0), '10.45-13.15', 'SO\nA.J-S\ns. 135', 'SO\nJW\ns. 136']
+
+[datetime.datetime(2018, 10, 28, 0, 0), '14.00-16.30', 'JiPPP\nDM\ns.142']
+
+[datetime.datetime(2018, 10, 28, 0, 0), '16.45-19.15', 'JiPPP\nDM\ns.142']
+
+[datetime.datetime(2018, 11, 3, 0, 0), '10.45-13.15', 'JiPP\nDr in¿. P. Poznañski\ns. F201']
+
+[datetime.datetime(2018, 11, 4, 0, 0), '8.00-10.30', 'Statystyka  matematyczna   \nWyk³ad dr Jan Pude³ko\nIF s.F201']
+
+[datetime.datetime(2018, 11, 4, 0, 0), '10.45-13.15', 'Statystyka  matematyczna   \nWyk³ad dr Jan Pude³ko\nIF s.F201']
+
+[datetime.datetime(2018, 11, 4, 0, 0), '14.00-16.30', 'Stat.\næw.\nIF s 201']
+
+[datetime.datetime(2018, 11, 17, 0, 0), '8.00-10.30', 'Jêzyk angielski \nE.Szabat\ns. .F017']
+
+[datetime.datetime(2018, 11, 17, 0, 0), '10.45-13.15', 'JiPPP\nDM\ns.135', 'SO\nJW\ns. 136']
+
+[datetime.datetime(2018, 11, 17, 0, 0), '14.00-16.30', 'SO\nJW\ns. 136', 'JiPPP\nDM\ns.135']
+
+[datetime.datetime(2018, 11, 18, 0, 0), '8.00-10.30', 'Statystyka  matematyczna   \nWyk³ad dr Jan Pude³ko\nIF s.F201']
+
+[datetime.datetime(2018, 11, 18, 0, 0), '10.45-13.15', 'Statystyka  matematyczna   \nWyk³ad dr Jan Pude³ko\nIF s.F201']
+
+[datetime.datetime(2018, 11, 18, 0, 0), '14.00-16.30', 'Stat.\næw.\nIF s 201']
+
+[datetime.datetime(2018, 11, 18, 0, 0), '16.45-19.15', 'PEiTC\nKS\ns. F020']
+
+[datetime.datetime(2018, 11, 24, 0, 0), '8.00-10.30', 'Jêzyk angielski \nE.Szabat\ns. .S2']
+
+[datetime.datetime(2018, 11, 24, 0, 0), '10.45-13.15', 'Jêzyki i paradygmaty programowania\nDr in¿. P. Poznañski\ns. 1/15 Dzia³ownia']
+
+[datetime.datetime(2018, 11, 24, 0, 0), '14.00-16.30', 'Encykopledia Prawa\nMgr Joanna Dudek\ns. 1/15 Dzia³ownia']
+
+[datetime.datetime(2018, 11, 25, 0, 0), '8.00-10.30', 'Systemy operacyjne \ndr in¿. A. Jasiñska – Suwada\nwyk³ad\ns. 1/15 Dzia³ownia']
+
+[datetime.datetime(2018, 11, 25, 0, 0), '10.45-13.15', 'JiPPP\nDM\ns.135', 'SO\nJW\ns. 136']
+
+[datetime.datetime(2018, 11, 25, 0, 0), '14.00-16.30', 'SO\nJW\ns. 136', 'JiPPP\nDM\ns.135']
+
+[datetime.datetime(2018, 12, 1, 0, 0), '8.00-10.30', 'Stat.\næw.\nIF s 201']
+
+[datetime.datetime(2018, 12, 1, 0, 0), '10.45-13.15', 'PEiTC\nKS\ns. F020']
+
+[datetime.datetime(2018, 12, 1, 0, 0), '14.00-16.30', 'PEiTC\ndr in¿ Tomasz Nabag³o\nIF s.F201']
+
+[datetime.datetime(2018, 12, 1, 0, 0), '16.45-19.15', 'PEiTC\nTN\ns. F020']
+
+[datetime.datetime(2018, 12, 2, 0, 0), '8.00-10.30', 'Systemy operacyjne \ndr in¿. A. Jasiñska – Suwada\nwyk³ad\ns. S1 Sto³ówka']
+
+[datetime.datetime(2018, 12, 2, 0, 0), '10.45-13.15', 'JiPPP\nDM\ns.142', 'SO\nJW\ns. 136']
+
+[datetime.datetime(2018, 12, 2, 0, 0), '14.00-16.30', 'SO\nJW\ns. 136', 'JiPPP\nDM\ns.142']
+
+[datetime.datetime(2018, 12, 8, 0, 0), '8.00-10.30', 'Jêzyk angielski \nE.Szabat\ns. .S2']
+
+[datetime.datetime(2018, 12, 8, 0, 0), '10.45-13.15', 'Jêzyki i paradygmaty programowania\nDr in¿. P. Poznañski\ns. 1/15 Dzia³ownia']
+
+[datetime.datetime(2018, 12, 8, 0, 0), '14.00-16.30', 'Systemy operacyjne \ndr in¿. A. Jasiñska – Suwada\nwyk³ad\ns. 1/15 Dzia³ownia']
+
+[datetime.datetime(2018, 12, 15, 0, 0), '8.00-10.30', 'Stat.\næw.\nIF s 201']
+
+[datetime.datetime(2018, 12, 15, 0, 0), '10.45-13.15', 'PEiTC\ndr in¿ Tomasz Nabag³o\nIF s.201']
+
+[datetime.datetime(2018, 12, 15, 0, 0), '14.00-16.30', 'PEiTC\nTN\ns. F020']
+
+[datetime.datetime(2018, 1, 12, 0, 0), '8.00-10.30', 'Stat.\næw.\nIF s 201']
+
+[datetime.datetime(2018, 1, 12, 0, 0), '10.45-13.15', 'PEiTC\ndr in¿ Tomasz Nabag³o\nIF s.201']
+
+[datetime.datetime(2018, 1, 12, 0, 0), '14.00-16.30', 'PEiTC\nTN\ns. F020']
+
+[datetime.datetime(2018, 1, 13, 0, 0), '8.00-10.30', 'Systemy operacyjne \ndr in¿. A. Jasiñska – Suwada\nwyk³ad\ns. S1 Sto³ówka']
+
+[datetime.datetime(2018, 1, 13, 0, 0), '10.45-13.15', 'JiPPP\nDM\ns.135', 'SO\nJW\ns. 136']
+
+[datetime.datetime(2018, 1, 13, 0, 0), '14.00-16.30', 'SO\nJW\ns. 136', 'JiPPP\nDM\ns.135']
+
+[datetime.datetime(2018, 1, 19, 0, 0), '8.00-10.30', 'JiPP\nMK\nS.112']
+
+[datetime.datetime(2018, 1, 19, 0, 0), '14.00-16.30', 'PEiTC\ndr in¿ Tomasz Nabag³o\nIF s.201']
+
+[datetime.datetime(2018, 1, 19, 0, 0), '16.45-19.15', 'PEiTC\nTN\ns. F020']
+
+[datetime.datetime(2018, 1, 20, 0, 0), '8.00-10.30', 'Jêzyk angielski \nE.Szabat\ns. .S2']
+
+[datetime.datetime(2018, 1, 20, 0, 0), '10.45-13.15', 'Jêzyki i paradygmaty programowania\nDr in¿. P. Poznañski\ns. 1/15 Dzia³ownia']
+
+[datetime.datetime(2018, 1, 20, 0, 0), '14.00-16.30', 'Encykopledia Prawa\nMgr Joanna Dudek\ns. 1/15 Dzia³ownia']
+
+[datetime.datetime(2018, 1, 26, 0, 0), '8.00-10.30', 'Systemy operacyjne \ndr in¿. A. Jasiñska – Suwada\nwyk³ad\ns. Inst Inf']
+
+[datetime.datetime(2018, 1, 26, 0, 0), '10.45-13.15', 'SO\nJW\ns. 136']
+
+[datetime.datetime(2018, 1, 26, 0, 0), '14.00-16.30', 'SO\nJW\ns. 136', 'JiPPP\nDM\ns.142']
+
+[datetime.datetime(2018, 1, 26, 0, 0), '16.45-19.15', 'JiPPP\nDM\ns.142']
+
+[datetime.datetime(2018, 1, 27, 0, 0), '8.00-10.30', 'Stat.\næw.\nIF s 201']
+
+[datetime.datetime(2018, 1, 27, 0, 0), '10.45-13.15', 'PEiTC\ndr in¿ Tomasz Nabag³o\nIF s.201']
+
+[datetime.datetime(2018, 1, 27, 0, 0), '14.00-16.30', 'PEiTC\nTN\ns. F020']
