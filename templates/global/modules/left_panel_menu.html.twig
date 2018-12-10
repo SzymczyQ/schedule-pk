@@ -26,5 +26,12 @@
                 <span>{{ 'general.admin_page'|trans }}</span>
             </a>
         </li>
+
+        <li class="treeview {{ route == 'faculty' ? 'active' }}">
+            <a href="{{ path('faculty') }}">
+                <i class="fa fa-cogs"></i>
+                <span>{{ 'general.faculty_page'|trans }}</span>
+            </a>
+        </li>
     {% endif %}
 </ul>
