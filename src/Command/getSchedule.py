@@ -50,13 +50,13 @@ for l in filesLinks:
         fName = vals[1].split("=")[1].replace('"', '')
     if fName != None and fName != "":
         if re.match(schNameRegex, fName):
-            dbCursor.execute("UPDATE config SET value = "
-                             "'{}' WHERE token = 'currentScheduleFile'".format(fName))
+            #dbCursor.execute("UPDATE config SET value = "
+            #                 "'{}' WHERE token = 'currentScheduleFile'".format(fName))
             ### REMOVE THE COMMENT BELOW WHEN TESTING FINISHED !!!!
             #scheduleDb.commit()
             if fName != currentSchduleFileName:
                 path = os.path.dirname(os.path.abspath(__file__))
-                fPath = f"{path}\\{fName}"
+                fPath = f"{path}/{fName}"
                 with open(fPath, 'wb') as f:
                     f.write(req.content)
 
@@ -70,4 +70,4 @@ for l in filesLinks:
                     cycle = dbCursor.fetchone()[0]
                     
                     schedule = parseScheduleXls.parseSchFile(fPath, cycle, year, groupName)
-                    uploadToDb.uploadToDb(groupId, schedule, dbCursor)
+                    uploadToDb.uploadToDb(groupId, schedule)

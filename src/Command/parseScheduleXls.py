@@ -1,9 +1,11 @@
 import pandas as pd
+from pandas import ExcelWriter
 import xlrd
 import numpy as np
 import datetime
 import math
 from collections import OrderedDict
+import os
 
 def unique_list(l):
     return list(OrderedDict.fromkeys(l))
@@ -22,6 +24,14 @@ def getUnmargedExcelFile(fName):
     for r1, rh, c1, ch in sht.merged_cells:
         df.iloc[r1:rh, c1:ch] = sht.cell_value(r1, c1)
 
+    path = os.path.dirname(os.path.abspath(__file__))
+    fPath = f"{path}/temp.xls"
+    writer = ExcelWriter(fPath)
+    df.to_excel(writer,'Sheet1', index = False)
+    writer.save()
+
+    df = pd.read_excel(fPath)
+
     umXls = df.as_matrix()
     umXls = remove_start_empty_rowes(umXls)
 
@@ -32,33 +42,31 @@ def parseSchFile(fName, cycle, year, group):
     schedule = list()
     umXls, rows, cols = getUnmargedExcelFile(fName)
 
-    cycle = cycle.encode("latin-1", "ignore")
-    year = year.encode("latin-1", "ignore")
-    group = group.encode("latin-1", "ignore")
-
     # komórki pod złym kierunkiem na 'nan'
     for x in range(cols):
-        cellVal = str(umXls[0, x]).encode("latin-1", "ignore")
+        cellVal = str(umXls[0, x]).strip(" ")
         if cellVal != cycle:
             umXls[:, x] = float('nan')
 
     #komorki pod innym rokiem i grupa na NAN, jezeli grupa i rok nie znana zostaje
     for x in range(cols):
-        cellVal = str(umXls[1, x]).encode("latin-1", "ignore")
+        cellVal = str(umXls[1, x])
         if cellVal != 'nan' and cellVal != year:
             umXls[:, x] = float('nan')
         elif cellVal == year:
-            cell2Val = str(int(umXls[2, x])).encode("latin-1", "ignore")
+            cell2Val = str(umXls[2, x])
             if cell2Val != group:
                 umXls[:, x] = float('nan')
     
     #wpisywanie do listy jezeli linijka zaczyna sie od data oraz takiej lini nie ma w classes
     for x in range(3, rows):
         l = []
-        val1 = str(umXls[x])
-        val2 = str(umXls[x-1])
+        val1 = umXls[x]
+        val2 = umXls[x-1]
         val3 = umXls[x][0]
-        if val1 != val2 and type(val3) is int:
+        val4 = umXls[x][18]
+        if (str(val1) != str(val2) and 
+           (type(val3) is int or type(val4) is int)):
             for y in val1:
                 if str(y) != 'nan':
                     l.append(y)

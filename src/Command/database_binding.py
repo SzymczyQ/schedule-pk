@@ -61,12 +61,17 @@ class dbConnection():
         self._passWrd = "schedulepk"
         self._dbName = "schedule_pk"
         self._url = "pma.podzialpk.pl"
-        self._connString = "'mysql://{}:{}@{}/{}'".format(self._dbUser,
-                                                         self._passWrd,
-                                                         self._url,
-                                                         self._dbName)
-        self.Engine = sqlalchemy.create_engine(self._connString)
+        self._connString = "mysql://{}:{}@{}/{}?charset=utf8".format(self._dbUser,
+                                                        self._passWrd,
+                                                        self._url,
+                                                        self._dbName)
+        self.Engine = sqlalchemy.create_engine(self._connString, encoding = 'utf-8')
         self._session = sqlalchemy.orm.scoped_session(sqlalchemy.orm.sessionmaker())
         self._session.configure(bind = self.Engine,
                                 autoflush = False,
                                 expire_on_commit = False)
+
+    def Add(self, what):
+        self._session.add(what)
+        self._session.flush()
+        self._session.commit()
