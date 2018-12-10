@@ -6,13 +6,13 @@ from lxml import html
 import requests
 import re
 import parseScheduleXls
+import uploadToDb
+import os
 
-scheduleDb = mysql.connector.connect(
-  host = "pma.podzialpk.pl",
-  user = "schedulepk",
-  passwd = "schedulepk",
-  database = "schedule_pk"
-)
+scheduleDb = mysql.connector.connect (host = "pma.podzialpk.pl",
+                                      user = "schedulepk",
+                                      passwd = "schedulepk",
+                                      database = "schedule_pk" )
 
 dbCursor = scheduleDb.cursor()
 
@@ -55,6 +55,19 @@ for l in filesLinks:
             ### REMOVE THE COMMENT BELOW WHEN TESTING FINISHED !!!!
             #scheduleDb.commit()
             if fName != currentSchduleFileName:
-                with open(fName, 'wb') as f:
+                path = os.path.dirname(os.path.abspath(__file__))
+                fPath = f"{path}\\{fName}"
+                with open(fPath, 'wb') as f:
                     f.write(req.content)
-                parseScheduleXls.parseSchFile(fName)
+
+                schedule = list()
+                dbCursor.execute("SELECT id, name, year_id FROM groups")
+                groups = dbCursor.fetchall()
+                for groupId, groupName, year_id in groups:
+                    dbCursor.execute(f"SELECT name, cycle_id FROM years WHERE id = '{year_id}'")
+                    year, cycle_id = dbCursor.fetchone() 
+                    dbCursor.execute(f"SELECT name FROM cycles WHERE id = '{cycle_id}'")
+                    cycle = dbCursor.fetchone()[0]
+                    
+                    schedule = parseScheduleXls.parseSchFile(fPath, cycle, year, groupName)
+                    uploadToDb.uploadToDb(groupId, schedule, dbCursor)
