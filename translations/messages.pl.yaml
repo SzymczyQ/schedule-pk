@@ -36,6 +36,7 @@ general:
     user_profile: 'Panel użytkownika'
     admin_page: 'Panel administratora'
     faculty_page: 'Konfiguracja specjalności'
+    cycle_page: 'Konfiguracja stopni'
     toastr:
         title:
             success: 'Sukces!'
@@ -76,6 +77,16 @@ faculty:
         header_2: 'Nazwa'
         header_3: 'Akcje'
 
+cycle:
+    page_title: 'Konfiguracja stopni'
+    add_box_header: 'Dodaj nowy stopień'
+    main_box_header: 'Stopnie'
+    table:
+        header_1: 'Id'
+        header_2: 'Nazwa'
+        header_3: 'Specjalność'
+        header_4: 'Akcje'
+
 admin_edit_config:
     edit_box_header: 'Edytuj parametr'
     page_title: 'Edycja parametru'
@@ -83,6 +94,10 @@ admin_edit_config:
 admin_edit_faculty:
     edit_box_header: 'Edytuj specjalność'
     page_title: 'Edycja specjalności'
+
+admin_edit_cycle:
+    edit_box_header: 'Edytuj stopień'
+    page_title: 'Edycja stopnia'
 
 404:
     page_title: 'Błąd 404'
@@ -184,6 +199,35 @@ delete_faculty_form:
 edit_faculty_form:
     messages:
         success: 'Specjalność została zmieniona'
+        warning: 'Formularz zawiera błędy'
+        error: 'Wystąpił nieoczekiwany błąd'
+    form_label:
+        submit: 'Edytuj'
+        submit_edit: 'Zapisz'
+
+cycle_form:
+    messages:
+        success: 'Dane zostały zapisane'
+        warning: 'Formularz zawiera błędy'
+        error: 'Wystąpił nieoczekiwany błąd'
+    form_label:
+        name: 'Stopień studiów'
+        faculty: 'Specjalność'
+        submit: 'Dodaj'
+    form_placeholder:
+        name: 'Wpisz stopień studiów...'
+        faculty: 'Wybierz specjalność...'
+
+delete_cycle_form:
+    messages:
+        error: 'Wystąpił nieoczekiwany błąd'
+        success: 'Poprawnie usunięto stopień'
+    form_label:
+        submit: 'Usuń'
+
+edit_cycle_form:
+    messages:
+        success: 'Stopień została zmieniona'
         warning: 'Formularz zawiera błędy'
         error: 'Wystąpił nieoczekiwany błąd'
     form_label:

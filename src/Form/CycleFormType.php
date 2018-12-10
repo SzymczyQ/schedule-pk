@@ -2,7 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Cycle;
 use App\Entity\Faculty;
+use App\Repository\FacultyRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -12,10 +15,10 @@ use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Validator\Constraints\Length;
 
 /**
- * Class FacultyFormType
+ * Class ConfigFormType
  * @package App\Form
  */
-class FacultyFormType extends AbstractType
+class CycleFormType extends AbstractType
 {
     /**
      * @var TranslatorInterface $translator
@@ -23,7 +26,7 @@ class FacultyFormType extends AbstractType
     private $translator;
 
     /**
-     * FacultyFormType constructor.
+     * CycleFormType constructor.
      * @param TranslatorInterface $translator
      */
     public function __construct(TranslatorInterface $translator)
@@ -40,9 +43,9 @@ class FacultyFormType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'attr' => [
-                    'placeholder' => $this->translator->trans('faculty_form.form_placeholder.name')
+                    'placeholder' => $this->translator->trans('cycle_form.form_placeholder.name')
                 ],
-                'label' => $this->translator->trans('faculty_form.form_label.name'),
+                'label' => $this->translator->trans('cycle_form.form_label.name'),
                 'required' => true,
                 'constraints' => [
                     new Length([
@@ -51,8 +54,20 @@ class FacultyFormType extends AbstractType
                     ])
                 ]
             ])
+            ->add('faculty', EntityType::class, [
+                'attr' => [
+                    'placeholder' => $this->translator->trans('cycle_form.form_placeholder.faculty')
+                ],
+                'label' => $this->translator->trans('cycle_form.form_label.faculty'),
+                'class' => Faculty::class,
+                'choice_label' => 'name',
+                'query_builder' => function (FacultyRepository $facultyRepository) {
+                    return $facultyRepository->createQueryBuilder('f')
+                        ->orderBy('f.name', 'ASC');
+                },
+            ])
             ->add('submit', SubmitType::class, [
-                'label' => $this->translator->trans('faculty_form.form_label.submit'),
+                'label' => $this->translator->trans('cycle_form.form_label.submit'),
             ])
         ;
     }
@@ -63,7 +78,7 @@ class FacultyFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Faculty::class,
+            'data_class' => Cycle::class,
         ]);
     }
 

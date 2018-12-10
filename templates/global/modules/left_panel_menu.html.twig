@@ -33,5 +33,12 @@
                 <span>{{ 'general.faculty_page'|trans }}</span>
             </a>
         </li>
+
+        <li class="treeview {{ route == 'cycle' ? 'active' }}">
+            <a href="{{ path('cycle') }}">
+                <i class="fa fa-cogs"></i>
+                <span>{{ 'general.cycle_page'|trans }}</span>
+            </a>
+        </li>
     {% endif %}
 </ul>
