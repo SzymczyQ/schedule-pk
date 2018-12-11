@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme groupForm 'global/forms/config_horizontal_layout.html.twig' %}
+
+{% block pageTitle %}
+    {{ 'admin_edit_group.page_title'|trans }}
+{% endblock %}
+
+{% block pageContentDescriptionHeader %}
+    {{ 'admin_edit_group.page_title'|trans }}
+{% endblock %}
+
+{% block pageContentDescriptionBreadcrumb %}{% endblock %}
+
+{% block pageContent %}
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        {{ 'admin_edit_group.edit_box_header'|trans }}
+                    </h3>
+                </div>
+
+                {{ form_start(groupForm) }}
+                    <div class="box-body">
+                        {# FORM ERRORS #}
+                        {{ form_errors(groupForm) }}
+
+                        {# INCLUDE FORM TOKEN #}
+                        {{ form_row(groupForm._token) }}
+
+                        {{ form_row(groupForm.name) }}
+                        {{ form_row(groupForm.cycle) }}
+
+                        {# FORM SUBMIT #}
+                        {{ form_row(groupForm.submit,
+                            {'label': 'edit_group_form.form_label.submit_edit', 'attr': {'class': 'btn-success'}}) }}
+                    </div>
+                {{ form_end(groupForm, {'render_rest': false}) }}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -6,6 +6,7 @@
 {% set facultyRoutes = ['faculty', 'admin_faculty_edit', 'admin_faculty_delete'] %}
 {% set cycleRoutes = ['cycle', 'admin_cycle_edit', 'admin_cycle_delete'] %}
 {% set yearRoutes = ['cycle', 'admin_cycle_edit', 'admin_cycle_delete'] %}
+{% set groupRoutes = ['group', 'admin_group_edit', 'admin_group_delete'] %}
 
 <ul class="sidebar-menu">
     <li class="header">{{ 'general.main_menu'|trans|upper }}</li>
@@ -50,6 +51,13 @@
             <a href="{{ path('year') }}">
                 <i class="fa fa-cogs"></i>
                 <span>{{ 'general.year_page'|trans }}</span>
+            </a>
+        </li>
+
+        <li class="treeview {{ route in groupRoutes ? 'active' }}">
+            <a href="{{ path('group') }}">
+                <i class="fa fa-cogs"></i>
+                <span>{{ 'general.group_page'|trans }}</span>
             </a>
         </li>
     {% endif %}

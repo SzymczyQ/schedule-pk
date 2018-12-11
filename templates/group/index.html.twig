@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme groupForm 'global/forms/config_horizontal_layout.html.twig' %}
+
+{% block pageTitle %}
+    {{ 'group.page_title'|trans }}
+{% endblock %}
+
+{% block pageContentDescriptionHeader %}
+    {{ 'group.page_title'|trans }}
+{% endblock %}
+
+{% block pageContentDescriptionBreadcrumb %}{% endblock %}
+
+{% block pageContent %}
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        {{ 'group.add_box_header'|trans }}
+                    </h3>
+                </div>
+
+                {{ form_start(groupForm) }}
+                    <div class="box-body">
+                        {# FORM ERRORS #}
+                        {{ form_errors(groupForm) }}
+
+                        {# INCLUDE FORM TOKEN #}
+                        {{ form_row(groupForm._token) }}
+
+                        {{ form_row(groupForm.name) }}
+                        {{ form_row(groupForm.year) }}
+
+                        {# FORM SUBMIT #}
+                        {{ form_row(groupForm.submit, {'attr': {'class': 'btn-success'}}) }}
+                    </div>
+                {{ form_end(groupForm, {'render_rest': false}) }}
+
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        {{ 'group.main_box_header'|trans }}
+                    </h3>
+                </div>
+
+                <div class="box-body table-responsive">
+                    <table class="table table-hover">
+
+                        <tr>
+                            <th>{{ 'group.table.header_1'|trans }}</th>
+                            <th>{{ 'group.table.header_2'|trans }}</th>
+                            <th>{{ 'group.table.header_3'|trans }}</th>
+                            <th>{{ 'group.table.header_4'|trans }}</th>
+                        </tr>
+
+                        {% for group in groups %}
+                            <tr>
+                                <td>{{ group.id }}</td>
+                                <td>{{ group.name }}</td>
+                                <td>{{ group.year.name }}</td>
+                                <td>
+                                    <form method="post"
+                                          action="{{ path('admin_group_edit', {'group': group.id}) }}"
+                                          class="col-md-6 admin-config-edit-form"
+                                    >
+                                        <button type="submit" class="btn-info btn btn-block">
+                                            {{ 'edit_group_form.form_label.submit'|trans }}
+                                        </button>
+                                    </form>
+
+                                    <form method="post"
+                                          action="{{ path('admin_group_delete', {'group': group.id}) }}"
+                                          class="col-md-6 admin-config-delete-form"
+                                    >
+                                        <button type="submit" class="btn-danger btn btn-block">
+                                            {{ 'delete_group_form.form_label.submit'|trans }}
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -38,6 +38,7 @@ general:
     faculty_page: 'Konfiguracja specjalności'
     cycle_page: 'Konfiguracja stopni'
     year_page: 'Konfiguracja lat'
+    group_page: 'Konfiguracja grup'
     toastr:
         title:
             success: 'Sukces!'
@@ -98,6 +99,16 @@ year:
         header_3: 'Stopień'
         header_4: 'Akcje'
 
+group:
+    page_title: 'Konfiguracja grup'
+    add_box_header: 'Dodaj nową grupę'
+    main_box_header: 'Grupy'
+    table:
+        header_1: 'Id'
+        header_2: 'Nazwa'
+        header_3: 'Rok'
+        header_4: 'Akcje'
+
 admin_edit_config:
     edit_box_header: 'Edytuj parametr'
     page_title: 'Edycja parametru'
@@ -113,6 +124,10 @@ admin_edit_cycle:
 admin_edit_year:
     edit_box_header: 'Edytuj rok'
     page_title: 'Edycja roku'
+
+admin_edit_group:
+  edit_box_header: 'Edytuj grupę'
+  page_title: 'Edycja grupy'
 
 404:
     page_title: 'Błąd 404'
@@ -272,6 +287,35 @@ delete_year_form:
 edit_year_form:
     messages:
         success: 'Rok został zmieniony'
+        warning: 'Formularz zawiera błędy'
+        error: 'Wystąpił nieoczekiwany błąd'
+    form_label:
+        submit: 'Edytuj'
+        submit_edit: 'Zapisz'
+
+group_form:
+    messages:
+        success: 'Dane zostały zapisane'
+        warning: 'Formularz zawiera błędy'
+        error: 'Wystąpił nieoczekiwany błąd'
+    form_label:
+        name: 'Grupa'
+        year: 'Rok studiów'
+        submit: 'Dodaj'
+    form_placeholder:
+        name: 'Wpisz grupę...'
+        year: 'Wybierz rok studiów...'
+
+delete_group_form:
+    messages:
+        error: 'Wystąpił nieoczekiwany błąd'
+        success: 'Poprawnie usunięto grupę'
+    form_label:
+        submit: 'Usuń'
+
+edit_group_form:
+    messages:
+        success: 'Grupa została zmieniona'
         warning: 'Formularz zawiera błędy'
         error: 'Wystąpił nieoczekiwany błąd'
     form_label:
