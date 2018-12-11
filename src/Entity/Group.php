@@ -26,7 +26,7 @@ class Group
      *
      * @var Year|null $year
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Group", inversedBy="groups")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Year", inversedBy="groups")
      * @ORM\JoinColumn(name="year_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      */
     private $year;
