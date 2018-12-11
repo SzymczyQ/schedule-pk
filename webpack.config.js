@@ -14,6 +14,7 @@ Encore
     .addEntry('js/plugins/fastclick', './assets/js/plugins/fastclick.js')
     .addEntry('js/plugins/jquery', './assets/js/plugins/jquery.js')
     .addEntry('js/plugins/jquery.slimscroll', './assets/js/plugins/jquery.slimscroll.js')
+    .addEntry('js/plugins/jquery.dataTables', './assets/js/plugins/jquery.dataTables.js')
 
     // Global JavaScripts
     .addEntry('js/notifications/notifications', './assets/js/notifications/notifications.js')
@@ -24,12 +25,19 @@ Encore
     // User page
     .addEntry('js/user/user', './assets/js/user/user.js')
 
+    // Home page
+    .addEntry('js/homepage/homepage', [
+        './assets/js/plugins/jquery.dataTables.js',
+        './assets/js/homepage/homepage.js'
+    ])
+
     // Project CSS files
     .addStyleEntry('css/bootstrap', './assets/css/bootstrap.css')
     .addStyleEntry('css/font-awesome', './assets/css/font-awesome.css')
     .addStyleEntry('css/ionicons', './assets/css/ionicons.css')
     .addStyleEntry('css/adminlte', './assets/css/adminlte.css')
     .addStyleEntry('css/skin-green', './assets/css/skin-green.css')
+    .addStyleEntry('css/dataTables.bootstrap', './assets/css/dataTables.bootstrap.css')
 
     // Custom styles
     .addStyleEntry('css/error', './assets/scss/error.scss')
