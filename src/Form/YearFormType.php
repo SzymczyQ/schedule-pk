@@ -14,6 +14,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 /**
  * Class YearFormType
@@ -49,6 +51,8 @@ class YearFormType extends AbstractType
                 'label' => $this->translator->trans('year_form.form_label.name'),
                 'required' => true,
                 'constraints' => [
+                    new NotBlank(),
+                    new NotNull(),
                     new Length([
                         'min' => 3,
                         'max' => 50
@@ -60,12 +64,17 @@ class YearFormType extends AbstractType
                     'placeholder' => $this->translator->trans('year_form.form_placeholder.cycle')
                 ],
                 'label' => $this->translator->trans('year_form.form_label.cycle'),
+                'required' => true,
                 'class' => Cycle::class,
                 'choice_label' => 'name',
                 'query_builder' => function (CycleRepository $cycleRepository) {
                     return $cycleRepository->createQueryBuilder('f')
                         ->orderBy('f.name', 'ASC');
                 },
+                'constraints' => [
+                    new NotBlank(),
+                    new NotNull()
+                ]
             ])
             ->add('submit', SubmitType::class, [
                 'label' => $this->translator->trans('year_form.form_label.submit'),

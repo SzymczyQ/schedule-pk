@@ -10,6 +10,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 /**
  * Class FacultyFormType
@@ -45,6 +47,8 @@ class FacultyFormType extends AbstractType
                 'label' => $this->translator->trans('faculty_form.form_label.name'),
                 'required' => true,
                 'constraints' => [
+                    new NotBlank(),
+                    new NotNull(),
                     new Length([
                         'min' => 3,
                         'max' => 50

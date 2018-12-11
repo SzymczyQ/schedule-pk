@@ -13,6 +13,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 /**
  * Class GroupFormType
@@ -48,6 +50,8 @@ class GroupFormType extends AbstractType
                 'label' => $this->translator->trans('group_form.form_label.name'),
                 'required' => true,
                 'constraints' => [
+                    new NotBlank(),
+                    new NotNull(),
                     new Length([
                         'min' => 3,
                         'max' => 50
@@ -59,12 +63,17 @@ class GroupFormType extends AbstractType
                     'placeholder' => $this->translator->trans('group_form.form_placeholder.year')
                 ],
                 'label' => $this->translator->trans('group_form.form_label.year'),
+                'required' => true,
                 'class' => Year::class,
                 'choice_label' => 'name',
                 'query_builder' => function (YearRepository $yearRepository) {
                     return $yearRepository->createQueryBuilder('f')
                         ->orderBy('f.name', 'ASC');
                 },
+                'constraints' => [
+                    new NotBlank(),
+                    new NotNull()
+                ]
             ])
             ->add('submit', SubmitType::class, [
                 'label' => $this->translator->trans('group_form.form_label.submit'),

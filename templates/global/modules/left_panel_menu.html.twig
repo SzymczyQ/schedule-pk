@@ -5,20 +5,22 @@
 {% set configRoutes = ['admin', 'admin_config_edit', 'admin_config_delete'] %}
 {% set facultyRoutes = ['faculty', 'admin_faculty_edit', 'admin_faculty_delete'] %}
 {% set cycleRoutes = ['cycle', 'admin_cycle_edit', 'admin_cycle_delete'] %}
-{% set yearRoutes = ['cycle', 'admin_cycle_edit', 'admin_cycle_delete'] %}
+{% set yearRoutes = ['year', 'admin_year_edit', 'admin_year_delete'] %}
 {% set groupRoutes = ['group', 'admin_group_edit', 'admin_group_delete'] %}
 
-<ul class="sidebar-menu">
+{% set allRoutes = configRoutes|merge(facultyRoutes)|merge(cycleRoutes)|merge(yearRoutes)|merge(groupRoutes) %}
+
+<ul class="sidebar-menu" data-widget="tree">
     <li class="header">{{ 'general.main_menu'|trans|upper }}</li>
 
-    <li class="treeview {{ route == 'homepage' ? 'active' }}">
+    <li class="{{ route == 'homepage' ? 'active' }}">
         <a href="{{ path('homepage') }}">
             <i class="fa fa-globe"></i>
             <span>{{ 'general.main_page'|trans }}</span>
         </a>
     </li>
 
-    <li class="treeview {{ route == 'user' ? 'active' }}">
+    <li class="{{ route == 'user' ? 'active' }}">
         <a href="{{ path('user') }}">
             <i class="fa fa-user"></i>
             <span>{{ 'general.user_profile'|trans }}</span>
@@ -26,39 +28,56 @@
     </li>
 
     {% if is_granted('ROLE_ADMIN') %}
-        <li class="treeview {{ route in configRoutes ? 'active' }}">
-            <a href="{{ path('admin') }}">
+        {% set class = route in allRoutes ? 'menu-open' : '' %}
+
+        <li class="treeview {{ class }}">
+            <a href="javascript:void(0)">
                 <i class="fa fa-cogs"></i>
                 <span>{{ 'general.admin_page'|trans }}</span>
-            </a>
-        </li>
 
-        <li class="treeview {{ route in facultyRoutes ? 'active' }}">
-            <a href="{{ path('faculty') }}">
-                <i class="fa fa-cogs"></i>
-                <span>{{ 'general.faculty_page'|trans }}</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
             </a>
-        </li>
 
-        <li class="treeview {{ route in cycleRoutes ? 'active' }}">
-            <a href="{{ path('cycle') }}">
-                <i class="fa fa-cogs"></i>
-                <span>{{ 'general.cycle_page'|trans }}</span>
-            </a>
-        </li>
+            {% set style = route in allRoutes ? 'style="display: block;"' : '' %}
 
-        <li class="treeview {{ route in yearRoutes ? 'active' }}">
-            <a href="{{ path('year') }}">
-                <i class="fa fa-cogs"></i>
-                <span>{{ 'general.year_page'|trans }}</span>
-            </a>
-        </li>
+            <ul class="treeview-menu" {{ style|raw }}>
+                <li class="{{ route in configRoutes ? 'active' }}">
+                    <a href="{{ path('admin') }}">
+                        <i class="fa fa-cogs"></i>
+                        <span>{{ 'general.config_page'|trans }}</span>
+                    </a>
+                </li>
 
-        <li class="treeview {{ route in groupRoutes ? 'active' }}">
-            <a href="{{ path('group') }}">
-                <i class="fa fa-cogs"></i>
-                <span>{{ 'general.group_page'|trans }}</span>
-            </a>
+                <li class="{{ route in facultyRoutes ? 'active' }}">
+                    <a href="{{ path('faculty') }}">
+                        <i class="fa fa-cogs"></i>
+                        <span>{{ 'general.faculty_page'|trans }}</span>
+                    </a>
+                </li>
+
+                <li class="{{ route in cycleRoutes ? 'active' }}">
+                    <a href="{{ path('cycle') }}">
+                        <i class="fa fa-cogs"></i>
+                        <span>{{ 'general.cycle_page'|trans }}</span>
+                    </a>
+                </li>
+
+                <li class="{{ route in yearRoutes ? 'active' }}">
+                    <a href="{{ path('year') }}">
+                        <i class="fa fa-cogs"></i>
+                        <span>{{ 'general.year_page'|trans }}</span>
+                    </a>
+                </li>
+
+                <li class="{{ route in groupRoutes ? 'active' }}">
+                    <a href="{{ path('group') }}">
+                        <i class="fa fa-cogs"></i>
+                        <span>{{ 'general.group_page'|trans }}</span>
+                    </a>
+                </li>
+            </ul>
         </li>
     {% endif %}
 </ul>

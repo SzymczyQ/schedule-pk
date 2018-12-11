@@ -35,6 +35,7 @@ general:
     main_page: 'Strona główna'
     user_profile: 'Panel użytkownika'
     admin_page: 'Panel administratora'
+    config_page: 'Konfiguracja parametrów'
     faculty_page: 'Konfiguracja specjalności'
     cycle_page: 'Konfiguracja stopni'
     year_page: 'Konfiguracja lat'
