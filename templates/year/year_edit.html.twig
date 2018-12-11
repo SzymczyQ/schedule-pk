@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme yearForm 'global/forms/config_horizontal_layout.html.twig' %}
+
+{% block pageTitle %}
+    {{ 'admin_edit_year.page_title'|trans }}
+{% endblock %}
+
+{% block pageContentDescriptionHeader %}
+    {{ 'admin_edit_year.page_title'|trans }}
+{% endblock %}
+
+{% block pageContentDescriptionBreadcrumb %}{% endblock %}
+
+{% block pageContent %}
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        {{ 'admin_edit_year.edit_box_header'|trans }}
+                    </h3>
+                </div>
+
+                {{ form_start(yearForm) }}
+                    <div class="box-body">
+                        {# FORM ERRORS #}
+                        {{ form_errors(yearForm) }}
+
+                        {# INCLUDE FORM TOKEN #}
+                        {{ form_row(yearForm._token) }}
+
+                        {{ form_row(yearForm.name) }}
+                        {{ form_row(yearForm.cycle) }}
+
+                        {# FORM SUBMIT #}
+                        {{ form_row(yearForm.submit,
+                            {'label': 'edit_cycle_form.form_label.submit_edit', 'attr': {'class': 'btn-success'}}) }}
+                    </div>
+                {{ form_end(yearForm, {'render_rest': false}) }}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

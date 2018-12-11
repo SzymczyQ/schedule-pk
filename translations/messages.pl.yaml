@@ -37,6 +37,7 @@ general:
     admin_page: 'Panel administratora'
     faculty_page: 'Konfiguracja specjalności'
     cycle_page: 'Konfiguracja stopni'
+    year_page: 'Konfiguracja lat'
     toastr:
         title:
             success: 'Sukces!'
@@ -87,6 +88,16 @@ cycle:
         header_3: 'Specjalność'
         header_4: 'Akcje'
 
+year:
+    page_title: 'Konfiguracja lat'
+    add_box_header: 'Dodaj nowy rok'
+    main_box_header: 'Lata'
+    table:
+        header_1: 'Id'
+        header_2: 'Nazwa'
+        header_3: 'Stopień'
+        header_4: 'Akcje'
+
 admin_edit_config:
     edit_box_header: 'Edytuj parametr'
     page_title: 'Edycja parametru'
@@ -98,6 +109,10 @@ admin_edit_faculty:
 admin_edit_cycle:
     edit_box_header: 'Edytuj stopień'
     page_title: 'Edycja stopnia'
+
+admin_edit_year:
+    edit_box_header: 'Edytuj rok'
+    page_title: 'Edycja roku'
 
 404:
     page_title: 'Błąd 404'
@@ -227,7 +242,36 @@ delete_cycle_form:
 
 edit_cycle_form:
     messages:
-        success: 'Stopień została zmieniona'
+        success: 'Stopień został zmieniony'
+        warning: 'Formularz zawiera błędy'
+        error: 'Wystąpił nieoczekiwany błąd'
+    form_label:
+        submit: 'Edytuj'
+        submit_edit: 'Zapisz'
+
+year_form:
+    messages:
+        success: 'Dane zostały zapisane'
+        warning: 'Formularz zawiera błędy'
+        error: 'Wystąpił nieoczekiwany błąd'
+    form_label:
+        name: 'Rok studiów'
+        cycle: 'Stopień studiów'
+        submit: 'Dodaj'
+    form_placeholder:
+        name: 'Wpisz rok studiów...'
+        cycle: 'Wybierz stopień studiów...'
+
+delete_year_form:
+    messages:
+        error: 'Wystąpił nieoczekiwany błąd'
+        success: 'Poprawnie usunięto rok'
+    form_label:
+        submit: 'Usuń'
+
+edit_year_form:
+    messages:
+        success: 'Rok został zmieniony'
         warning: 'Formularz zawiera błędy'
         error: 'Wystąpił nieoczekiwany błąd'
     form_label:

@@ -2,6 +2,11 @@
 
 {% set route = app.request.get('_route') %}
 
+{% set configRoutes = ['admin', 'admin_config_edit', 'admin_config_delete'] %}
+{% set facultyRoutes = ['faculty', 'admin_faculty_edit', 'admin_faculty_delete'] %}
+{% set cycleRoutes = ['cycle', 'admin_cycle_edit', 'admin_cycle_delete'] %}
+{% set yearRoutes = ['cycle', 'admin_cycle_edit', 'admin_cycle_delete'] %}
+
 <ul class="sidebar-menu">
     <li class="header">{{ 'general.main_menu'|trans|upper }}</li>
 
@@ -20,24 +25,31 @@
     </li>
 
     {% if is_granted('ROLE_ADMIN') %}
-        <li class="treeview {{ route == 'admin' ? 'active' }}">
+        <li class="treeview {{ route in configRoutes ? 'active' }}">
             <a href="{{ path('admin') }}">
                 <i class="fa fa-cogs"></i>
                 <span>{{ 'general.admin_page'|trans }}</span>
             </a>
         </li>
 
-        <li class="treeview {{ route == 'faculty' ? 'active' }}">
+        <li class="treeview {{ route in facultyRoutes ? 'active' }}">
             <a href="{{ path('faculty') }}">
                 <i class="fa fa-cogs"></i>
                 <span>{{ 'general.faculty_page'|trans }}</span>
             </a>
         </li>
 
-        <li class="treeview {{ route == 'cycle' ? 'active' }}">
+        <li class="treeview {{ route in cycleRoutes ? 'active' }}">
             <a href="{{ path('cycle') }}">
                 <i class="fa fa-cogs"></i>
                 <span>{{ 'general.cycle_page'|trans }}</span>
+            </a>
+        </li>
+
+        <li class="treeview {{ route in yearRoutes ? 'active' }}">
+            <a href="{{ path('year') }}">
+                <i class="fa fa-cogs"></i>
+                <span>{{ 'general.year_page'|trans }}</span>
             </a>
         </li>
     {% endif %}
