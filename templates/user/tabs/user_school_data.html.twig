@@ -1,6 +1,7 @@
 <div class="tab-pane" id="user_school_data">
     <ul id="user_school_data_list"
         class="user-school-data-list"
+        data-group-data="{{ groupData|json_encode }}"
         data-widget-tags="{{ '<li class="user-school-data-list-element"></li>'|e }}"
         data-prototype="
             {% filter escape %}

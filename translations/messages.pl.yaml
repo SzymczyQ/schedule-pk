@@ -160,27 +160,18 @@ user_info_form:
         email_not_unique: 'Adres email jest już zarezerwowany.'
 
 user_school_info_form:
-    choices:
-        first_degree: 'Pierwszy stopień'
-        second_degree: 'Drugi stopień'
-        first_year: 'Pierwszy rok'
-        second_year: 'Drugi rok'
-        third_year: 'Trzeci rok'
-        fourth_year: 'Czwarty rok'
-        first_subgroup: 'Pierwsza podgrupa'
-        second_subgroup: 'Druga podgrupa'
     form_label:
-        faculty: 'Wydział'
-        degree: 'Stopień'
+        faculty: 'Specjalność'
+        cycle: 'Stopień'
         year: 'Rok'
         group: 'Grupa'
-        subgroup: 'Podgrupa'
     form_placeholder:
-        faculty: 'Wpisz wydział...'
-        degree: 'Wybierz stopień...'
+        faculty: 'Wybierz specjalność...'
+        cycle: 'Wybierz stopień...'
         year: 'Wybierz rok...'
-        group: 'Wpisz grupę...'
-        subgroup: 'Wybierz podgrupę...'
+        group: 'Wybierz grupę...'
+    validation:
+        group_not_unique: 'Grupa została już użyta.'
 
 config_form:
     messages:

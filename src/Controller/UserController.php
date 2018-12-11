@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\UserInfoFormType;
+use App\Repository\GroupRepository;
 use App\Service\Manager\FlashBagManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -36,19 +37,27 @@ class UserController extends Controller
     private $translator;
 
     /**
+     * @var GroupRepository $groupRepository
+     */
+    private $groupRepository;
+
+    /**
      * UserController constructor.
      * @param EntityManagerInterface $entityManager
      * @param FlashBagManager $flashBagManager
      * @param TranslatorInterface $translator
+     * @param GroupRepository $groupRepository
      */
     public function __construct(
         EntityManagerInterface $entityManager,
         FlashBagManager $flashBagManager,
-        TranslatorInterface $translator
+        TranslatorInterface $translator,
+        GroupRepository $groupRepository
     ) {
         $this->entityManager = $entityManager;
         $this->flashBagManager = $flashBagManager;
         $this->translator = $translator;
+        $this->groupRepository = $groupRepository;
     }
 
     /**
@@ -83,7 +92,8 @@ class UserController extends Controller
         }
 
         return $this->render('user/index.html.twig', [
-            'userInfoForm' => $userInfoForm->createView()
+            'userInfoForm' => $userInfoForm->createView(),
+            'groupData' => $this->groupRepository->getAllRelatedGroupData()
         ]);
     }
 }

@@ -2,16 +2,20 @@
 
 namespace App\Form;
 
+use App\Entity\Group;
+use App\Entity\User;
 use App\Entity\UserSchoolInfo;
+use App\Repository\GroupRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Translation\TranslatorInterface;
-use Symfony\Component\Validator\Constraints\Choice;
-use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\Callback;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotNull;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Class UserSchoolInfoFormType
@@ -40,78 +44,86 @@ class UserSchoolInfoFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('faculty', TextType::class, [
+            ->add('group', EntityType::class, [
                 'attr' => [
-                    'placeholder' => $this->translator->trans('user_school_info_form.form_placeholder.faculty')
-                ],
-                'label' => $this->translator->trans('user_school_info_form.form_label.faculty'),
-                'constraints' => [
-                    new NotBlank(),
-                    new Length([
-                        'min' => 3,
-                        'max' => 255
-                    ]),
-                ]
-            ])
-            ->add('degree', ChoiceType::class, [
-                'attr' => [
-                    'placeholder' => $this->translator->trans('user_school_info_form.form_placeholder.degree')
-                ],
-                'label' => $this->translator->trans('user_school_info_form.form_label.degree'),
-                'choices' => [
-                    $this->translator->trans('user_school_info_form.choices.first_degree') => 1,
-                    $this->translator->trans('user_school_info_form.choices.second_degree') => 2,
-                ],
-                'constraints' => [
-                    new NotBlank(),
-                    new Choice([1, 2]),
-
-                ]
-            ])
-            ->add('year', ChoiceType::class, [
-                'attr' => [
-                    'placeholder' => $this->translator->trans('user_school_info_form.form_placeholder.year')
-                ],
-                'label' => $this->translator->trans('user_school_info_form.form_label.year'),
-                'choices' => [
-                    $this->translator->trans('user_school_info_form.choices.first_year') => 1,
-                    $this->translator->trans('user_school_info_form.choices.second_year') => 2,
-                    $this->translator->trans('user_school_info_form.choices.third_year') => 3,
-                    $this->translator->trans('user_school_info_form.choices.fourth_year') => 4,
-                ],
-                'constraints' => [
-                    new NotBlank(),
-                    new Choice([1, 2, 3, 4])
-                ]
-            ])
-            ->add('group', TextType::class, [
-                'attr' => [
-                    'placeholder' => $this->translator->trans('user_school_info_form.form_placeholder.group')
+                    'placeholder' => $this->translator->trans('user_school_info_form.form_placeholder.group'),
+                    'class' => 'user-school-info-group'
                 ],
                 'label' => $this->translator->trans('user_school_info_form.form_label.group'),
+                'required' => true,
+                'class' => Group::class,
+                'choice_label' => 'name',
+                'query_builder' => function (GroupRepository $groupRepository) {
+                    return $groupRepository->createQueryBuilder('g')
+                        ->orderBy('g.name', 'ASC');
+                },
                 'constraints' => [
                     new NotBlank(),
-                    new Length([
-                        'min' => 3,
-                        'max' => 255
-                    ]),
+                    new NotNull(),
+                    new Callback([
+                        'callback' => [$this, 'checkGroupUniqueness']
+                    ])
                 ]
             ])
-            ->add('subgroup', ChoiceType::class, [
+            ->add('year', TextType::class, [
                 'attr' => [
-                    'placeholder' => $this->translator->trans('user_school_info_form.form_placeholder.subgroup')
+                    'placeholder' => $this->translator->trans('user_school_info_form.form_placeholder.year'),
+                    'class' => 'user-school-info-year'
                 ],
-                'label' => $this->translator->trans('user_school_info_form.form_label.subgroup'),
-                'choices' => [
-                    $this->translator->trans('user_school_info_form.choices.first_subgroup') => 1,
-                    $this->translator->trans('user_school_info_form.choices.second_subgroup') => 2,
+                'label' => $this->translator->trans('user_school_info_form.form_label.year'),
+                'disabled' => true,
+                'mapped' => false
+            ])
+            ->add('cycle', TextType::class, [
+                'attr' => [
+                    'placeholder' => $this->translator->trans('user_school_info_form.form_placeholder.cycle'),
+                    'class' => 'user-school-info-cycle'
                 ],
-                'constraints' => [
-                    new NotBlank(),
-                    new Choice([1, 2])
-                ]
+                'label' => $this->translator->trans('user_school_info_form.form_label.cycle'),
+                'disabled' => true,
+                'mapped' => false
+            ])
+            ->add('faculty', TextType::class, [
+                'attr' => [
+                    'placeholder' => $this->translator->trans('user_school_info_form.form_placeholder.faculty'),
+                    'class' => 'user-school-info-faculty'
+                ],
+                'label' => $this->translator->trans('user_school_info_form.form_label.faculty'),
+                'disabled' => true,
+                'mapped' => false
             ])
         ;
+    }
+
+    /**
+     * @param $group
+     * @param ExecutionContextInterface $context
+     */
+    public function checkGroupUniqueness($group, ExecutionContextInterface $context): void
+    {
+        /** @var User $user */
+        $user = $context->getRoot()->getData();
+        $currentGroupName = $group instanceof Group ? $group->getName() : null;
+        $groupCount = 0;
+
+        /** @var UserSchoolInfo $userSchoolInfo */
+        foreach ($user->getUserSchoolInfos() as $userSchoolInfo) {
+            $group = $userSchoolInfo->getGroup();
+            if ($group->getName() === $currentGroupName) {
+                $groupCount++;
+            }
+        }
+
+        if ($groupCount > 1) {
+            $context
+                ->buildViolation(
+                    $this->translator->trans('user_school_info_form.validation.group_not_unique')
+                )
+                ->atPath(
+                    $context->getPropertyPath()
+                )
+                ->addViolation();
+        }
     }
 
     /**

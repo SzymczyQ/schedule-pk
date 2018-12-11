@@ -20,4 +20,23 @@ class GroupRepository extends ServiceEntityRepository
     {
         parent::__construct($managerRegistry, Group::class);
     }
+
+    /**
+     * @return array
+     */
+    public function getAllRelatedGroupData(): array
+    {
+        return $this->createQueryBuilder('g', 'g.id')
+            ->select('g.id AS groupId')
+            ->addSelect('g.name AS groupName')
+            ->addSelect('y.name AS yearName')
+            ->addSelect('c.name AS cycleName')
+            ->addSelect('f.name AS facultyName')
+            ->join('g.year', 'y')
+            ->join('y.cycle', 'c')
+            ->join('c.faculty', 'f')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

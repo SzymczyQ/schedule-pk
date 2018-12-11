@@ -92,7 +92,7 @@ class UserInfoFormType extends AbstractType
                         'max' => 35,
                     ]),
                     new Callback([
-                        'callback' => [$this, 'validationEmailUniqueness']
+                        'callback' => [$this, 'checkEmailUniqueness']
                     ])
                 ]
             ])
@@ -119,7 +119,7 @@ class UserInfoFormType extends AbstractType
      * @param ExecutionContextInterface $context
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function validationEmailUniqueness($value, ExecutionContextInterface $context)
+    public function checkEmailUniqueness($value, ExecutionContextInterface $context)
     {
         $isUniqueEmail =  $this->entityManager
             ->getRepository(User::class)

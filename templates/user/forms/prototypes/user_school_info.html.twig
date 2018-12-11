@@ -1,8 +1,18 @@
-{{ form_row(form.faculty) }}
-{{ form_row(form.degree) }}
-{{ form_row(form.year) }}
-{{ form_row(form.group) }}
-{{ form_row(form.subgroup) }}
+{% set group = form.group.vars.data %}
+
+{% if group is not null %}
+    {% set groupInfo = groupData[group.id] %}
+
+    {{ form_row(form.group) }}
+    {{ form_row(form.year, {'attr': {'value': groupInfo['yearName']}}) }}
+    {{ form_row(form.cycle, {'attr': {'value': groupInfo['cycleName']}}) }}
+    {{ form_row(form.faculty, {'attr': {'value': groupInfo['facultyName']}}) }}
+{% else %}
+    {{ form_row(form.group) }}
+    {{ form_row(form.year) }}
+    {{ form_row(form.cycle) }}
+    {{ form_row(form.faculty) }}
+{% endif %}
 
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">

@@ -39,39 +39,14 @@ class UserSchoolInfo
     private $user;
 
     /**
-     * @var string|null $faculty
+     * Many UserSchoolInfo have one Group. This is the owning side.
      *
-     * @ORM\Column(type="string", name="faculty", length=255, nullable=false)
-     */
-    private $faculty;
-
-    /**
-     * @var int|null $degree
+     * @var Group|null $group
      *
-     * @ORM\Column(type="integer", name="degree", nullable=false)
-     */
-    private $degree;
-
-    /**
-     * @var int|null $year
-     *
-     * @ORM\Column(type="integer", name="year", nullable=false)
-     */
-    private $year;
-
-    /**
-     * @var string|null $group
-     *
-     * @ORM\Column(type="string", name="`group`", length=255, nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Group")
+     * @ORM\JoinColumn(name="group_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      */
     private $group;
-
-    /**
-     * @var string|null $subgroup
-     *
-     * @ORM\Column(type="string", name="subgroup", length=255, nullable=true)
-     */
-    private $subgroup;
 
     /**
      * @return int|null
@@ -106,82 +81,18 @@ class UserSchoolInfo
     }
 
     /**
-     * @return null|string
+     * @return Group|null
      */
-    public function getFaculty(): ?string
-    {
-        return $this->faculty;
-    }
-
-    /**
-     * @param null|string $faculty
-     */
-    public function setFaculty(?string $faculty): void
-    {
-        $this->faculty = $faculty;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getDegree(): ?int
-    {
-        return $this->degree;
-    }
-
-    /**
-     * @param int|null $degree
-     */
-    public function setDegree(?int $degree): void
-    {
-        $this->degree = $degree;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getYear(): ?int
-    {
-        return $this->year;
-    }
-
-    /**
-     * @param int|null $year
-     */
-    public function setYear(?int $year): void
-    {
-        $this->year = $year;
-    }
-
-    /**
-     * @return null|string
-     */
-    public function getGroup(): ?string
+    public function getGroup(): ?Group
     {
         return $this->group;
     }
 
     /**
-     * @param null|string $group
+     * @param Group|null $group
      */
-    public function setGroup(?string $group): void
+    public function setGroup(?Group $group): void
     {
         $this->group = $group;
-    }
-
-    /**
-     * @return null|string
-     */
-    public function getSubgroup(): ?string
-    {
-        return $this->subgroup;
-    }
-
-    /**
-     * @param null|string $subgroup
-     */
-    public function setSubgroup(?string $subgroup): void
-    {
-        $this->subgroup = $subgroup;
     }
 }
