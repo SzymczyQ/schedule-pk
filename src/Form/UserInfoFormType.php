@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -11,10 +12,12 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Component\Validator\Constraints\Callback;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Valid;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Class UserInfoFormType
@@ -28,12 +31,19 @@ class UserInfoFormType extends AbstractType
     private $translator;
 
     /**
+     * @var EntityManagerInterface $entityManager
+     */
+    private $entityManager;
+
+    /**
      * UserInfoFormType constructor.
      * @param TranslatorInterface $translator
+     * @param EntityManagerInterface $entityManager
      */
-    public function __construct(TranslatorInterface $translator)
+    public function __construct(TranslatorInterface $translator, EntityManagerInterface $entityManager)
     {
         $this->translator = $translator;
+        $this->entityManager = $entityManager;
     }
 
     /**
@@ -80,6 +90,9 @@ class UserInfoFormType extends AbstractType
                     new Length([
                         'min' => 3,
                         'max' => 35,
+                    ]),
+                    new Callback([
+                        'callback' => [$this, 'validationEmailUniqueness']
                     ])
                 ]
             ])
@@ -99,6 +112,29 @@ class UserInfoFormType extends AbstractType
                 'label' => $this->translator->trans('user_info_form.form_label.submit'),
             ])
         ;
+    }
+
+    /**
+     * @param $value
+     * @param ExecutionContextInterface $context
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function validationEmailUniqueness($value, ExecutionContextInterface $context)
+    {
+        $isUniqueEmail =  $this->entityManager
+            ->getRepository(User::class)
+            ->isUniqueEmail($value);
+
+        if (!$isUniqueEmail) {
+            $context
+                ->buildViolation(
+                    $this->translator->trans('user_info_form.validation.email_not_unique')
+                )
+                ->atPath(
+                    $context->getPropertyPath()
+                )
+                ->addViolation();
+        }
     }
 
     /**

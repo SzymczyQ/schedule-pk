@@ -20,4 +20,21 @@ class UserRepository extends ServiceEntityRepository
     {
         parent::__construct($managerRegistry, User::class);
     }
+
+    /**
+     * @param null|string $email
+     * @return bool
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function isUniqueEmail(?string $email): bool
+    {
+        $result = $this->createQueryBuilder('u')
+            ->select('COUNT(u)')
+            ->where('u.email = :email')
+            ->setParameter('email', $email)
+            ->getQuery()
+            ->getSingleScalarResult();
+
+        return (int)$result < 2;
+    }
 }

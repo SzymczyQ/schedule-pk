@@ -156,6 +156,8 @@ user_info_form:
         first_name: 'Wpisz imię...'
         last_name: 'Wpisz nazwisko...'
         email: 'Wpisz adres email...'
+    validation:
+        email_not_unique: 'Adres email jest już zarezerwowany.'
 
 user_school_info_form:
     choices:
