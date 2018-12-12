@@ -1,0 +1,38 @@
+<div class="col-md-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">
+                {{ 'homepage.table_box_header'|trans }}
+                {{ group.name }}
+            </h3>
+        </div>
+
+        <div class="box-body">
+            <table class="table display responsive no-wrap table-bordered table-striped schedule-data-table">
+                <thead>
+                <tr>
+                    <th>{{ 'homepage.table.header_1'|trans }}</th>
+                    <th>{{ 'homepage.table.header_2'|trans }}</th>
+                    <th>{{ 'homepage.table.header_3'|trans }}</th>
+                    <th>{{ 'homepage.table.header_4'|trans }}</th>
+                    <th>{{ 'homepage.table.header_5'|trans }}</th>
+                    <th>{{ 'homepage.table.header_6'|trans }}</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                    {% for schedule in schedules %}
+                        <tr>
+                            <td>{{ schedule.classesDate|date('Y-m-d') }}</td>
+                            <td>{{ schedule.classesStartTime|date('H:i') }}</td>
+                            <td>{{ schedule.classesEndTime|date('H:i') }}</td>
+                            <td>{{ schedule.classesName }}</td>
+                            <td>{{ schedule.lecturerName }}</td>
+                            <td>{{ schedule.place }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

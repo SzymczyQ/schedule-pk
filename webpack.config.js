@@ -28,6 +28,7 @@ Encore
     // Home page
     .addEntry('js/homepage/homepage', [
         './assets/js/plugins/jquery.dataTables.js',
+        './assets/js/plugins/dataTables.bootstrap.js',
         './assets/js/homepage/homepage.js'
     ])
 

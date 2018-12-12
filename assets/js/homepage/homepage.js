@@ -1,8 +1,12 @@
-$('#example1').DataTable({
+$('.schedule-data-table').DataTable({
     'paging'      : true,
-    'lengthChange': false,
-    'searching'   : false,
+    'lengthChange': true,
+    'searching'   : true,
     'ordering'    : true,
     'info'        : true,
-    'autoWidth'   : false
+    'autoWidth'   : false,
+    'responsive'  : true,
+    'language': {
+        'url': '//cdn.datatables.net/plug-ins/1.10.19/i18n/Polish.json'
+    }
 });

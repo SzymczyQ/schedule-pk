@@ -44,6 +44,8 @@ class ScheduleRepository extends ServiceEntityRepository
             ->join('s.group', 'g')
             ->where('g.id IN(:groupIds)')
             ->setParameter('groupIds', $userGroups)
+            ->orderBy('s.classesDate')
+            ->addOrderBy('s.classesStartTime')
             ->getQuery()
             ->getResult();
 

@@ -53,6 +53,14 @@ general:
 # Homepage
 homepage:
     page_title: 'Strona główna'
+    table_box_header: 'Rozkład zajęć dla grupy: '
+    table:
+        header_1: 'Data'
+        header_2: 'Godzina rozpoczęcia'
+        header_3: 'Godzina zakończenia'
+        header_4: 'Przedmiot'
+        header_5: 'Prowadzący'
+        header_6: 'Sala'
 
 # User profile
 user:
