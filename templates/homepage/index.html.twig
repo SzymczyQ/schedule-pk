@@ -4,6 +4,10 @@
     {{ 'homepage.page_title'|trans }}
 {% endblock %}
 
+{% block pageContentDescriptionHeader %}
+    {{ 'homepage.page_title'|trans }}
+{% endblock %}
+
 {% block pageStylesheets %}
     {{ parent() }}
 
@@ -13,12 +17,22 @@
 {% block pageContentDescriptionBreadcrumb %}{% endblock %}
 
 {% block pageContent %}
-    <div class="row">
-        {% for groupId, groupSchedules in schedules %}
-            {% include 'homepage/schedule_table.html.twig'
-                with {'schedules': groupSchedules, 'group': getGroupById(groupId)} %}
-        {% endfor %}
-    </div>
+
+    {% if schedules is not empty %}
+        <div class="row">
+            {% for groupId, groupSchedules in schedules %}
+                {% include 'homepage/schedule_table.html.twig'
+                    with {'schedules': groupSchedules, 'group': getGroupById(groupId)} %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="callout callout-warning">
+            <h4>{{ 'homepage.reminder_empty_header'|trans }}</h4>
+
+            {{ 'homepage.reminder_empty_description'|trans }}
+        </div>
+    {% endif %}
+
 {% endblock %}
 
 {% block pageExtraJavaScripts %}

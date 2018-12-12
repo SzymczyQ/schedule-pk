@@ -61,6 +61,8 @@ homepage:
         header_4: 'Przedmiot'
         header_5: 'Prowadzący'
         header_6: 'Sala'
+    reminder_empty_header: 'Uwaga!'
+    reminder_empty_description: 'Twoje konto nie jest przypisane do żadnej grupy! Możesz to zrobić w panelu użytkownika.'
 
 # User profile
 user:
