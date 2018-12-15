@@ -19,12 +19,12 @@
 {% block pageContent %}
 
     {% if schedules is not empty %}
-        <div class="row">
-            {% for groupId, groupSchedules in schedules %}
-                {% include 'homepage/schedule_table.html.twig'
-                    with {'schedules': groupSchedules, 'group': getGroupById(groupId)} %}
-            {% endfor %}
-        </div>
+        {#<div class="row">#}
+            {#{% for groupId, groupSchedules in schedules %}#}
+                {#{% include 'homepage/schedule_table.html.twig'#}
+                    {#with {'schedules': groupSchedules, 'group': getGroupById(groupId)} %}#}
+            {#{% endfor %}#}
+        {#</div>#}
     {% else %}
         <div class="callout callout-warning">
             <h4>{{ 'homepage.reminder_empty_header'|trans }}</h4>
