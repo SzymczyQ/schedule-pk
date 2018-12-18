@@ -25,7 +25,7 @@ def getUnmargedExcelFile(fName):
         df.iloc[r1:rh, c1:ch] = sht.cell_value(r1, c1)
 
     path = os.path.dirname(os.path.abspath(__file__))
-    fPath = f"{path}/temp.xls"
+    fPath = "{path}/temp.xls".format(path)
     writer = ExcelWriter(fPath)
     df.to_excel(writer,'Sheet1', index = False)
     writer.save()

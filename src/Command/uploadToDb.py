@@ -14,8 +14,8 @@ def uploadToDb(gId, schedule):
         date = dateFromNumber(entry[0])
         t = entry[1].replace(".", ":").split("-")
         if len(t) < 2: continue
-        startTime = f"{t[0]}:00"
-        endTime = f"{t[1]}:00"
+        startTime = "{}:00".format(t[0])
+        endTime = "{}:00".format(t[1])
         for clss in entry[2:]:
             name = "empty"
             lectName = "noNameProvided"

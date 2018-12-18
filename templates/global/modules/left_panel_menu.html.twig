@@ -27,57 +27,57 @@
         </a>
     </li>
 
-    {#{% if is_granted('ROLE_ADMIN') %}#}
-        {#{% set class = route in allRoutes ? 'menu-open' : '' %}#}
+    {% if is_granted('ROLE_ADMIN') %}
+        {% set class = route in allRoutes ? 'menu-open' : '' %}
 
-        {#<li class="treeview {{ class }}">#}
-            {#<a href="javascript:void(0)">#}
-                {#<i class="fa fa-cogs"></i>#}
-                {#<span>{{ 'general.admin_page'|trans }}</span>#}
+        <li class="treeview {{ class }}">
+            <a href="javascript:void(0)">
+                <i class="fa fa-cogs"></i>
+                <span>{{ 'general.admin_page'|trans }}</span>
 
-                {#<span class="pull-right-container">#}
-                    {#<i class="fa fa-angle-left pull-right"></i>#}
-                {#</span>#}
-            {#</a>#}
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
 
-            {#{% set style = route in allRoutes ? 'style="display: block;"' : '' %}#}
+            {% set style = route in allRoutes ? 'style="display: block;"' : '' %}
 
-            {#<ul class="treeview-menu" {{ style|raw }}>#}
-                {#<li class="{{ route in configRoutes ? 'active' }}">#}
-                    {#<a href="{{ path('admin') }}">#}
-                        {#<i class="fa fa-cogs"></i>#}
-                        {#<span>{{ 'general.config_page'|trans }}</span>#}
-                    {#</a>#}
-                {#</li>#}
+            <ul class="treeview-menu" {{ style|raw }}>
+                <li class="{{ route in configRoutes ? 'active' }}">
+                    <a href="{{ path('admin') }}">
+                        <i class="fa fa-cogs"></i>
+                        <span>{{ 'general.config_page'|trans }}</span>
+                    </a>
+                </li>
 
-                {#<li class="{{ route in facultyRoutes ? 'active' }}">#}
-                    {#<a href="{{ path('faculty') }}">#}
-                        {#<i class="fa fa-cogs"></i>#}
-                        {#<span>{{ 'general.faculty_page'|trans }}</span>#}
-                    {#</a>#}
-                {#</li>#}
+                <li class="{{ route in facultyRoutes ? 'active' }}">
+                    <a href="{{ path('faculty') }}">
+                        <i class="fa fa-cogs"></i>
+                        <span>{{ 'general.faculty_page'|trans }}</span>
+                    </a>
+                </li>
 
-                {#<li class="{{ route in cycleRoutes ? 'active' }}">#}
-                    {#<a href="{{ path('cycle') }}">#}
-                        {#<i class="fa fa-cogs"></i>#}
-                        {#<span>{{ 'general.cycle_page'|trans }}</span>#}
-                    {#</a>#}
-                {#</li>#}
+                <li class="{{ route in cycleRoutes ? 'active' }}">
+                    <a href="{{ path('cycle') }}">
+                        <i class="fa fa-cogs"></i>
+                        <span>{{ 'general.cycle_page'|trans }}</span>
+                    </a>
+                </li>
 
-                {#<li class="{{ route in yearRoutes ? 'active' }}">#}
-                    {#<a href="{{ path('year') }}">#}
-                        {#<i class="fa fa-cogs"></i>#}
-                        {#<span>{{ 'general.year_page'|trans }}</span>#}
-                    {#</a>#}
-                {#</li>#}
+                <li class="{{ route in yearRoutes ? 'active' }}">
+                    <a href="{{ path('year') }}">
+                        <i class="fa fa-cogs"></i>
+                        <span>{{ 'general.year_page'|trans }}</span>
+                    </a>
+                </li>
 
-                {#<li class="{{ route in groupRoutes ? 'active' }}">#}
-                    {#<a href="{{ path('group') }}">#}
-                        {#<i class="fa fa-cogs"></i>#}
-                        {#<span>{{ 'general.group_page'|trans }}</span>#}
-                    {#</a>#}
-                {#</li>#}
-            {#</ul>#}
-        {#</li>#}
-    {#{% endif %}#}
+                <li class="{{ route in groupRoutes ? 'active' }}">
+                    <a href="{{ path('group') }}">
+                        <i class="fa fa-cogs"></i>
+                        <span>{{ 'general.group_page'|trans }}</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    {% endif %}
 </ul>

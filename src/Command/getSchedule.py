@@ -56,7 +56,7 @@ for l in filesLinks:
             #scheduleDb.commit()
             if fName != currentSchduleFileName:
                 path = os.path.dirname(os.path.abspath(__file__))
-                fPath = f"{path}/{fName}"
+                fPath = "{}/{}".format(path, fName)
                 with open(fPath, 'wb') as f:
                     f.write(req.content)
 
@@ -64,9 +64,9 @@ for l in filesLinks:
                 dbCursor.execute("SELECT id, name, year_id FROM groups")
                 groups = dbCursor.fetchall()
                 for groupId, groupName, year_id in groups:
-                    dbCursor.execute(f"SELECT name, cycle_id FROM years WHERE id = '{year_id}'")
+                    dbCursor.execute("SELECT name, cycle_id FROM years WHERE id = '{}'".format(year_id))
                     year, cycle_id = dbCursor.fetchone() 
-                    dbCursor.execute(f"SELECT name FROM cycles WHERE id = '{cycle_id}'")
+                    dbCursor.execute("SELECT name FROM cycles WHERE id = '{}'".format(cycle_id))
                     cycle = dbCursor.fetchone()[0]
                     
                     schedule = parseScheduleXls.parseSchFile(fPath, cycle, year, groupName)
