@@ -89,11 +89,29 @@
     "fig/link-util": {
         "version": "1.0.0"
     },
+    "firebase/php-jwt": {
+        "version": "v5.0.0"
+    },
     "friendsofsymfony/user-bundle": {
         "version": "v2.1.2"
     },
     "gedmo/doctrine-extensions": {
         "version": "v2.4.36"
+    },
+    "google/apiclient": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "49c5d7a66d863d28513979bf0666dc77599100c0"
+        }
+    },
+    "google/apiclient-services": {
+        "version": "v0.78"
+    },
+    "google/auth": {
+        "version": "v1.4.0"
     },
     "guzzlehttp/guzzle": {
         "version": "6.3.3"
@@ -178,6 +196,9 @@
     },
     "phpoffice/phpspreadsheet": {
         "version": "1.5.2"
+    },
+    "phpseclib/phpseclib": {
+        "version": "2.0.13"
     },
     "psr/cache": {
         "version": "1.0.1"

@@ -63,6 +63,8 @@ homepage:
         header_6: 'Sala'
     reminder_empty_header: 'Uwaga!'
     reminder_empty_description: 'Twoje konto nie jest przypisane do żadnej grupy! Możesz to zrobić w panelu użytkownika.'
+    add_to_calendar: 'Dodaj do kalendarza'
+    remove_from_calendar: 'Usuń z kalendarza'
 
 # User profile
 user:
@@ -119,6 +121,15 @@ group:
         header_2: 'Nazwa'
         header_3: 'Rok'
         header_4: 'Akcje'
+
+add_calendar:
+    error: 'Wystąpił nieoczekiwany błąd!'
+    success: 'Kalendarz został poprawnie dodany!'
+
+remove_calendar:
+    error: 'Wystąpił nieoczekiwany błąd!'
+    success: 'Kalendarz został poprawnie usunięty!'
+    warning: 'Kalendarz nie istnieje!'
 
 admin_edit_config:
     edit_box_header: 'Edytuj parametr'

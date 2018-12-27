@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Group;
 use App\Entity\Schedule;
 use App\Entity\User;
 use App\Entity\UserSchoolInfo;
@@ -55,5 +56,20 @@ class ScheduleRepository extends ServiceEntityRepository
         }
 
         return $result;
+    }
+
+    /**
+     * @param Group $group
+     * @return mixed
+     */
+    public function getSchedulesByGroup(Group $group)
+    {
+        return $this->createQueryBuilder('s')
+            ->select('s')
+            ->join('s.group', 'g')
+            ->where('g = :group')
+            ->setParameter('group', $group)
+            ->getQuery()
+            ->getResult();
     }
 }

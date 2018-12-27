@@ -5,6 +5,17 @@
                 {{ 'homepage.table_box_header'|trans }}
                 {{ group.name }}
             </h3>
+
+            <div class="col-md-4 pull-right">
+                <a href="{{ path('calendar_add_schedule', {'group': group.id }) }}"
+                   class="btn-success btn col-md-5">
+                    {{ 'homepage.add_to_calendar'|trans }}
+                </a>
+                <a href="{{ path('calendar_remove_schedule', {'group': group.id }) }}"
+                   class="btn-danger btn col-md-5 col-md-offset-2">
+                    {{ 'homepage.remove_from_calendar'|trans }}
+                </a>
+            </div>
         </div>
 
         <div class="box-body">
