@@ -103,13 +103,13 @@ class UserSchoolInfoFormType extends AbstractType
     {
         /** @var User $user */
         $user = $context->getRoot()->getData();
-        $currentGroupName = $group instanceof Group ? $group->getName() : null;
+        $currentGroupId = $group instanceof Group ? $group->getId() : null;
         $groupCount = 0;
 
         /** @var UserSchoolInfo $userSchoolInfo */
         foreach ($user->getUserSchoolInfos() as $userSchoolInfo) {
             $group = $userSchoolInfo->getGroup();
-            if ($group->getName() === $currentGroupName) {
+            if ($group->getId() === $currentGroupId) {
                 $groupCount++;
             }
         }

@@ -116,7 +116,7 @@ class CalendarController extends AbstractController
                 return $this->redirect($client);
             }
 
-            $calendarName = 'Podział PK - ' . $group->getName();
+            $calendarName = 'Podział PK - ' . $group->getName() . ' - ' . $group->getId();
             $service = new \Google_Service_Calendar($client);
 
             $calendarId =  $this->calendarManager->getCalendarIdByName($service, $calendarName);
@@ -180,7 +180,7 @@ class CalendarController extends AbstractController
                 return $this->redirect($client);
             }
 
-            $calendarName = 'Podział PK - ' . $group->getName();
+            $calendarName = 'Podział PK - ' . $group->getName() . ' - ' . $group->getId();
             $service = new \Google_Service_Calendar($client);
 
             $calendarId =  $this->calendarManager->getCalendarIdByName($service, $calendarName);
