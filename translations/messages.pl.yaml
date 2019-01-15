@@ -2,6 +2,7 @@
 login:
     page_title: 'Logowanie'
     register_link_text: 'Zarejestruj nowe konto'
+    resetting_link_text: 'Odzyskaj hasło'
     login_button_label: 'Zaloguj'
     email_input_placeholder: 'Adres email...'
     password_input_placeholder: 'Hasło...'
@@ -21,6 +22,21 @@ register:
     password_input_placeholder: 'Hasło...'
     retype_password_input_placeholder: 'Powtórz hasło...'
     username_input_placeholder: 'Nazwa użytkownika...'
+
+resetting:
+    request:
+        page_title: 'Przypomnienie hasła'
+        request_box_title: 'Podaj email aby odzyskać hasło'
+    check_email:
+        text: 'E-mail został wysłany. Zawiera on link do formularza zmiany hasła.
+               <br>
+               <br>
+               Uwaga: Możesz zresetować hasło tylko jeden raz w ciągu 2 godzin.
+               <br>
+               <br>
+               Sprawdź swoją skrzynkę pocztową, jeśli jednak nie widzisz wiadomości od nas, sprawdź folder spam lub spróbuj ponownie później.'
+    reset:
+        reset_box_title: 'Podaj nowe hasło, aby móc się zalogować'
 
 # General translations
 general:

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block pageTitle %}
+    {{ 'resetting.request.page_title'|trans }}
+{% endblock %}
+
+{% block pageBodyClass %}{{ 'login-page' }}{% endblock %}
+{% block pageBody %}
+    <div class="login-box" style="width: 80%">
+        <div class="login-logo">
+            <a href="{{ path('fos_user_resetting_check_email') }}">
+                {{ application.name }}
+            </a>
+        </div>
+
+        <div class="login-box-body text-center">
+            {{ 'resetting.check_email.text'|trans|raw }}
+        </div>
+    </div>
+{% endblock %}

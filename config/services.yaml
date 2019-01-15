@@ -18,6 +18,12 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
+    # Event listeners
+    App\EventListener\PasswordResettingListener:
+        tags:
+            - { name: kernel.event_subscriber }
+
+
     # Overwritten FOSUserBundle register action
     App\Controller\RegistrationController:
         arguments:
