@@ -7,6 +7,10 @@ fos_user_registration_confirmed:
     path: /register/confirmed
     controller: App\Controller\RegistrationController::confirmedAction
 
+fos_user_registration_register:
+    path: /register
+    controller: App\Controller\RegistrationController::registerAction
+
 # Google login routing
 google_login:
     path: /login/check-google

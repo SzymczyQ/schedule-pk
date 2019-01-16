@@ -4,6 +4,18 @@
     {{ 'register.page_title'|trans }}
 {% endblock %}
 
+{% block pageJavaScripts %}
+    <script src='https://www.google.com/recaptcha/api.js?render=6LepW4oUAAAAANrD-bDEfsNH2Wz5X_eIHDVrGKam'></script>
+    <script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LepW4oUAAAAANrD-bDEfsNH2Wz5X_eIHDVrGKam', {action: 'register'}).then(function(token) {
+                let reCaptchaResponseField = document.getElementById('re_captcha_response');
+                reCaptchaResponseField.value = token;
+            });
+        });
+    </script>
+{% endblock %}
+
 {% block pageBodyClass %}{{ 'register-page' }}{% endblock %}
 {% block pageBody %}
 
@@ -31,6 +43,10 @@
                   method="post"
                   class="fos_user_registration_register"
             >
+                <input type="hidden"
+                       name="re_captcha_response"
+                       id="re_captcha_response"
+                >
                 <input type="hidden"
                        id="{{ form._token.vars.id }}"
                        name="{{ form._token.vars.full_name }}"

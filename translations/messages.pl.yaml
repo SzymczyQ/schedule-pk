@@ -22,6 +22,7 @@ register:
     password_input_placeholder: 'Hasło...'
     retype_password_input_placeholder: 'Powtórz hasło...'
     username_input_placeholder: 'Nazwa użytkownika...'
+    you_are_robot: 'GOOGLE twierdzi, że jesteś robotem :('
 
 resetting:
     request:
