@@ -16,6 +16,8 @@ scheduleDb = mysql.connector.connect (host = "pma.podzialpk.pl",
 
 dbCursor = scheduleDb.cursor()
 
+dbCursor.execute("TRUNCATE TABLE schedule")
+
 dbCursor.execute("SELECT value FROM config WHERE token = 'baseUrl'")
 pageUrl = dbCursor.fetchone()[0]
 
