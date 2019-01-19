@@ -29,7 +29,13 @@ Encore
     .addEntry('js/homepage/homepage', [
         './assets/js/plugins/jquery.dataTables.js',
         './assets/js/plugins/dataTables.bootstrap.js',
-        './assets/js/homepage/homepage.js'
+        './assets/js/homepage/homepage.js',
+        './assets/js/plugins/dataTables.buttons.min.js',
+        './assets/js/plugins/buttons.flash.min.js',
+        './assets/js/plugins/jszip.min.js',
+        './assets/js/plugins/pdfmake.min.js',
+        './assets/js/plugins/buttons.html5.min.js',
+        './assets/js/plugins/buttons.print.min.js'
     ])
 
     // Project CSS files
@@ -62,7 +68,8 @@ Encore
     // Copy already minified files
     .addPlugin(new CopyWebpackPlugin([
         { from: './assets/js/plugins/respond.min.js', to: 'js/plugins/' },
-        { from: './assets/js/plugins/html5shiv.min.js', to: 'js/plugins/' }
+        { from: './assets/js/plugins/html5shiv.min.js', to: 'js/plugins/' },
+        { from: './assets/js/plugins/vfs_fonts.js', to: 'js/plugins/' }
     ]))
 ;
 
